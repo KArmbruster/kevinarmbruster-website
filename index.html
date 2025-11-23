@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Kevin Armbruster - Consultant for Business Process Automation">
-    <title>Kevin Armbruster - Coming Soon</title>
+    <meta name="description" content="Prozessautomatisierung Berater für KMU. Eliminiere repetitive Arbeit durch systematische Analyse und hands-on Implementierung. 7 Jahre Operations-Erfahrung + moderne Tools.">
+    <title>Kevin Armbruster | Prozessautomatisierung Berater Berlin</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/Kevin KA Logo square.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- n8n Chat Widget Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+
     <style>
         * {
             margin: 0;
@@ -12,73 +24,1026 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #2C3E50;
+            --secondary: #27AE60;
+            --accent: #E67E22;
+            --bg-light: #F8F9FA;
+            --text-dark: #2C3E50;
+            --white: #FFFFFF;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--primary);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
             display: flex;
             align-items: center;
+            gap: 0.5rem;
+            color: var(--white);
+            font-size: 1.25rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .lang-toggle {
+            display: flex;
+            gap: 0.5rem;
+            color: var(--white);
+        }
+
+        .lang-toggle span {
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .lang-toggle span.active {
+            opacity: 1;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #229954;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--primary);
+            color: var(--white);
+            padding: 4rem 2rem;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-content .highlight {
+            color: var(--secondary);
+            display: block;
+            font-size: 3.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--white);
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .hero-image {
+            display: flex;
             justify-content: center;
-            color: #fff;
-            padding: 20px;
+            align-items: center;
         }
 
-        .container {
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .about-content h2 {
+            font-size: 0.875rem;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .contact-item strong {
+            display: block;
+            color: var(--primary);
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item span {
+            color: #666;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 2rem;
+            background: var(--bg-light);
+        }
+
+        .section-header {
             text-align: center;
-            max-width: 600px;
+            max-width: 1000px;
+            margin: 0 auto 3rem;
         }
 
-        h1 {
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .service-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
-            font-weight: 700;
         }
 
-        .subtitle {
+        .service-card h3 {
             font-size: 1.5rem;
-            margin-bottom: 2rem;
-            font-weight: 300;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-card a:hover {
+            gap: 0.75rem;
+        }
+
+        /* Impact Numbers */
+        .impact {
+            padding: 5rem 2rem;
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .impact-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .impact-item h3 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .impact-item p {
+            font-size: 1rem;
             opacity: 0.9;
         }
 
-        .message {
+        /* Portfolio Section */
+        .portfolio {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+
+        .portfolio-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .portfolio-card {
+            background: var(--bg-light);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .portfolio-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .portfolio-card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-meta span {
+            background: var(--white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            color: var(--primary);
+        }
+
+        .impact-tag {
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 5rem 2rem;
+            background: var(--secondary);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
             font-size: 1.25rem;
-            margin-bottom: 3rem;
-            line-height: 1.6;
+            margin-bottom: 2rem;
             opacity: 0.95;
         }
 
-        .divider {
-            width: 80px;
-            height: 3px;
-            background: #fff;
-            margin: 2rem auto;
-            opacity: 0.7;
+        .btn-white {
+            background: var(--white);
+            color: var(--secondary);
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.125rem;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Contact Form Section */
+        .contact-form-section {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+
+        .contact-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-form-container h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .contact-form-container p {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .contact-form {
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #E0E0E0;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            background: var(--secondary);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            background: #229954;
+            transform: translateY(-2px);
+        }
+
+        .btn-submit:disabled {
+            background: #999;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            display: none;
+        }
+
+        .form-message.success {
+            display: block;
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .form-message.error {
+            display: block;
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* n8n Chat Widget Custom Colors */
+        :root {
+            --chat--color--primary: #27AE60;
+            --chat--color--primary-shade-50: #1e7d45;
+            --chat--color--primary--shade-100: #134b2a;
+            --chat--color--secondary: #20b69e;
+            --chat--color-secondary-shade-50: #1ca08a;
+            --chat--color-white: #ffffff;
+            --chat--color-light: #f2f4f8;
+            --chat--color-light-shade-50: #e6e9f1;
+            --chat--color-light-shade-100: #c2c5cc;
+            --chat--color-medium: #d2d4d9;
+            --chat--color-dark: #2C3E50;
+            --chat--color-disabled: #777980;
+            --chat--color-typing: #404040;
+
+            --chat--spacing: 1rem;
+            --chat--border-radius: 0.25rem;
+            --chat--transition-duration: 0.15s;
+
+            --chat--window--width: 400px;
+            --chat--window--height: 600px;
+
+            --chat--header-height: auto;
+            --chat--header--padding: var(--chat--spacing);
+            --chat--header--background: var(--chat--color-dark);
+            --chat--header--color: var(--chat--color-light);
+            --chat--header--border-top: none;
+            --chat--header--border-bottom: none;
+            --chat--header--border-bottom: none;
+            --chat--header--border-bottom: none;
+            --chat--heading--font-size: 2em;
+            --chat--header--color: var(--chat--color-light);
+            --chat--subtitle--font-size: inherit;
+            --chat--subtitle--line-height: 1.8;
+
+            --chat--textarea--height: 50px;
+
+            --chat--message--font-size: 1rem;
+            --chat--message--padding: var(--chat--spacing);
+            --chat--message--border-radius: var(--chat--border-radius);
+            --chat--message-line-height: 1.8;
+            --chat--message--bot--background: var(--chat--color-white);
+            --chat--message--bot--color: var(--chat--color-dark);
+            --chat--message--bot--border: none;
+            --chat--message--user--background: var(--chat--color--secondary);
+            --chat--message--user--color: var(--chat--color-white);
+            --chat--message--user--border: none;
+            --chat--message--pre--background: rgba(0, 0, 0, 0.05);
+
+            --chat--toggle--background: var(--chat--color--primary);
+            --chat--toggle--hover--background: var(--chat--color--primary-shade-50);
+            --chat--toggle--active--background: var(--chat--color--primary--shade-100);
+            --chat--toggle--color: var(--chat--color-white);
+            --chat--toggle--size: 64px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h4 {
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-column a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-column a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            opacity: 0.7;
+            font-size: 0.875rem;
+        }
+
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            h1 {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-content h1 {
                 font-size: 2rem;
             }
 
-            .subtitle {
-                font-size: 1.25rem;
+            .hero-content .highlight {
+                font-size: 2.5rem;
             }
 
-            .message {
-                font-size: 1rem;
+            .hero-image {
+                order: -1;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Kevin Armbruster</h1>
-        <div class="divider"></div>
-        <div class="subtitle">Consultant for Business Process Automation</div>
-        <div class="message">
-            Website coming soon
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="images/Kevin KA Logo klein.png" alt="Kevin Armbruster Logo">
+                Kevin Armbruster
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Über mich</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact" class="btn-primary">Kontakt</a></li>
+                <li class="lang-toggle">
+                    <span class="active">DE</span> | <span>EN</span>
+                </li>
+            </ul>
         </div>
-    </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>
+                    Hi, ich bin Kevin Armbruster
+                    <span class="highlight">Process Automation</span>
+                </h1>
+                <p>
+                    Ich helfe KMUs, repetitive Arbeit zu eliminieren und Prozesse zu optimieren durch systematische Analyse und hands-on Automatisierung.
+                </p>
+                <div class="hero-buttons">
+                    <a href="https://cal.com/kevin-armbruster-cjwy5v/30min" target="_blank" class="btn-primary">Kostenloses Erstgespräch</a>
+                    <a href="#portfolio" class="btn-secondary">Meine Projekte →</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/2025-4 Anzug Knie aufwärts.jpg" alt="Kevin Armbruster">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="images/2025-4 Anzug Knie aufwärts.jpg" alt="Kevin Armbruster">
+            </div>
+            <div class="about-content">
+                <h2>ÜBER MICH</h2>
+                <h3>Process Automation Consultant aus Berlin</h3>
+                <p>
+                    Ich bringe 7 Jahre Operations-Erfahrung aus der Fertigungsindustrie mit und habe als Lean Master bei KREATIZE Prozesse optimiert und Automatisierungen implementiert.
+                </p>
+                <p>
+                    Meine Stärke liegt in der Kombination aus operativem Verständnis und technischer Umsetzung – ich verstehe, wo Prozesse in der Praxis scheitern UND kann die Lösungen selbst bauen.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <h2>WIE ICH IHREM UNTERNEHMEN HELFEN KANN</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🔍</div>
+                <h3>Prozessanalyse & Optimierung</h3>
+                <p>
+                    Ich analysiere Ihre aktuellen Workflows, identifiziere Engpässe und entwickle gezielte Verbesserungsstrategien mit Lean-Prinzipien.
+                </p>
+                <a href="#contact">Mehr erfahren →</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⚙️</div>
+                <h3>Workflow-Automatisierung</h3>
+                <p>
+                    Ich baue maßgeschneiderte Automatisierungslösungen mit n8n, verbinde Ihre Systeme und eliminiere repetitive manuelle Aufgaben.
+                </p>
+                <a href="#contact">Mehr erfahren →</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🚀</div>
+                <h3>End-to-End Implementierung</h3>
+                <p>
+                    Von Requirements bis Deployment – ich übernehme die komplette technische Umsetzung und sorge für reibungslose Einführung.
+                </p>
+                <a href="#contact">Mehr erfahren →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Numbers -->
+    <section class="impact">
+        <div class="impact-grid">
+            <div class="impact-item">
+                <h3>81% → 95%</h3>
+                <p>Termintreue-Verbesserung</p>
+            </div>
+            <div class="impact-item">
+                <h3>50%</h3>
+                <p>Kostenreduktion</p>
+            </div>
+            <div class="impact-item">
+                <h3>50%</h3>
+                <p>Reduktion händischer Arbeit</p>
+            </div>
+            <div class="impact-item">
+                <h3>7 Jahre</h3>
+                <p>Operations-Erfahrung</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="section-header">
+            <h2>AUSGEWÄHLTE PROJEKTE</h2>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-card">
+                <h3>Veer.io Order Management System</h3>
+                <p>
+                    Komplette Workflow-Automatisierung mit Web-Frontend, WhatsApp-Integration und NocoDB Datenbank-Migration.
+                </p>
+                <div class="portfolio-meta">
+                    <span>n8n</span>
+                    <span>NocoDB</span>
+                    <span>API Integration</span>
+                </div>
+                <p class="impact-tag">→ 50% Reduktion händischer Arbeit</p>
+            </div>
+            <div class="portfolio-card">
+                <h3>KREATIZE Logistikzentrum</h3>
+                <p>
+                    Komplettes In-House Logistikzentrum konzipiert und implementiert. Betriebsüberführung ohne Service-Unterbrechung.
+                </p>
+                <div class="portfolio-meta">
+                    <span>Lean Manufacturing</span>
+                    <span>Prozessdesign</span>
+                    <span>Salesforce</span>
+                </div>
+                <p class="impact-tag">→ 50% Kostenreduktion</p>
+            </div>
+            <div class="portfolio-card">
+                <h3>KREATIZE Termintreue-Optimierung</h3>
+                <p>
+                    Verbesserung der Logistik-Performance durch Prozessoptimierung mit Lean-Prinzipien innerhalb von 6 Monaten.
+                </p>
+                <div class="portfolio-meta">
+                    <span>Lean Principles</span>
+                    <span>8D Method</span>
+                    <span>Analytics</span>
+                </div>
+                <p class="impact-tag">→ 81% → 95% Termintreue</p>
+            </div>
+            <div class="portfolio-card">
+                <h3>Pura Vida AI Chatbot</h3>
+                <p>
+                    AI-powered Chatbot mit n8n und LLM-Integration für automatisierte Gästebetreuung rund um die Uhr.
+                </p>
+                <div class="portfolio-meta">
+                    <span>n8n</span>
+                    <span>AI/LLM</span>
+                    <span>Telegram</span>
+                </div>
+                <p class="impact-tag">→ 24/7 automatisierter Support</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <h2>BEREIT, IHRE PROZESSE ZU OPTIMIEREN?</h2>
+        <p>Buchen Sie ein kostenloses 30-Minuten Erstgespräch – unverbindlich.</p>
+        <a href="https://cal.com/kevin-armbruster-cjwy5v/30min" target="_blank" class="btn-white">Kostenloses Erstgespräch buchen</a>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+        <div class="contact-form-container">
+            <h2>Oder schreiben Sie mir direkt</h2>
+            <p>Füllen Sie das Formular aus und ich melde mich zeitnah bei Ihnen.</p>
+
+            <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Nachricht *</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Nachricht senden</button>
+
+                <div id="formMessage" class="form-message"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Kevin Armbruster</h4>
+                <p>Process Automation Consultant</p>
+                <p style="margin-top: 1rem; opacity: 0.8; font-size: 0.875rem;">
+                    Ich helfe KMUs, Prozesse zu optimieren durch systematische Analyse und hands-on Automatisierung.
+                </p>
+            </div>
+            <div class="footer-column">
+                <h4>Schnelllinks</h4>
+                <ul>
+                    <li><a href="#services">Leistungen</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#about">Über mich</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Ressourcen</h4>
+                <ul>
+                    <li><a href="resources/Kevin Armbruster - Lebenslauf.pdf">📄 Lebenslauf (PDF)</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Vernetzen</h4>
+                <ul>
+                    <li><a href="https://linkedin.com/in/kevin-armbruster" target="_blank">LinkedIn</a></li>
+                    <li>Berlin, Deutschland</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 Kevin Armbruster. Alle Rechte vorbehalten.
+        </div>
+    </footer>
+
+    <script>
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const submitBtn = this.querySelector('.btn-submit');
+            const formMessage = document.getElementById('formMessage');
+
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            };
+
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Wird gesendet...';
+            formMessage.className = 'form-message';
+            formMessage.style.display = 'none';
+
+            try {
+                // Send to n8n webhook
+                const response = await fetch('https://kevin-n8n.up.railway.app/webhook/71ab5365-95c8-43e7-afa0-735126cccefc', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    // Success
+                    formMessage.className = 'form-message success';
+                    formMessage.textContent = 'Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet. Ich melde mich in Kürze bei Ihnen.';
+
+                    // Reset form
+                    this.reset();
+                } else {
+                    // Error
+                    formMessage.className = 'form-message error';
+                    formMessage.textContent = 'Es gab einen Fehler beim Senden Ihrer Nachricht. Bitte versuchen Sie es erneut oder kontaktieren Sie mich direkt per E-Mail.';
+                }
+            } catch (error) {
+                // Network error
+                formMessage.className = 'form-message error';
+                formMessage.textContent = 'Es gab einen Fehler beim Senden Ihrer Nachricht. Bitte versuchen Sie es erneut oder kontaktieren Sie mich direkt per E-Mail.';
+            } finally {
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Nachricht senden';
+            }
+        });
+    </script>
+
+    <!-- n8n Chat Widget -->
+    <script type="module">
+        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+        createChat({
+            // Mode - set to 'window' for floating bubble
+            mode: 'window',
+
+            // n8n Webhook URL - replace with your actual webhook URL when ready
+            webhookUrl: 'https://kevin-n8n.up.railway.app/webhook/d030c087-be85-4dc6-b30a-68c04c4725cc/chat',
+
+            // Webhook Config
+            webhookConfig: {
+                method: 'POST',
+                headers: {}
+            },
+
+            // Initial Messages
+            initialMessages: [
+                "Hi, ich bin Jake. Wie kann ich dir heute helfen?"
+            ],
+
+            i18n: {
+                en: {
+                    title: 'Hallo 👋',
+                    subtitle: "Frag mich einfach was. Ich antworte sofort ",
+                    footer: '',
+                    getStarted: 'Neue Konversation',
+                    inputPlaceholder: 'Schreibe deine Frage',
+                },
+	        },
+
+            // Metadata (sent to n8n with each message)
+            metadata: {
+                language: 'de',
+                source: 'website',
+                page: window.location.pathname
+            }
+        });
+    </script>
 </body>
 </html>
