@@ -5,6 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Project Overview
 
 This is Kevin Armbruster's personal website for his Process Automation Consulting business. The site showcases his expertise in operational excellence, business process automation, and workflow optimization for SMEs.
+The URL of the website is https://kevinarmbruster.de/
 
 **Current Status:** Early stage development with concept documentation and placeholder homepage. The site will be a professional bilingual (German/English) portfolio and service presentation platform.
 
