@@ -77,7 +77,7 @@ Located in [resources/](resources/) directory:
 These are real achievements from Kevin's work:
 - **81% → 95%** - On-time delivery improvement (KREATIZE)
 - **50%** - Cost reduction (Logistics Center)
-- **50%** - Manual work reduction (Veer.io automation)
+- **80%** - Manual work reduction (Veer.io automation)
 - **7 Years** - Operations experience at KREATIZE
 
 ### Core Services & Pricing
