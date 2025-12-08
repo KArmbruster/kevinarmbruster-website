@@ -117,7 +117,7 @@ nav {
     border: 2px solid var(--white);
     border-radius: 6px;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     transition: all 0.3s;
     display: inline-block;
 }
