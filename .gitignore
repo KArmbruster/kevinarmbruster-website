@@ -1,11 +1,11 @@
 # Concept and documentation files
 concept/
 
-# Images (if needed)
-# images/
+# Node modules
+node_modules/
 
-# Resources (if needed)
-# resources/
+# Eleventy build output is committed (for GitHub Pages)
+# dist/ is NOT ignored - we need it for deployment
 
 # OS files
 .DS_Store
@@ -17,3 +17,8 @@ Thumbs.db
 *.swp
 *.swo
 *~
+
+# Old files (keep originals for reference during migration)
+# Uncomment these after confirming new site works:
+# index.html
+# 404.html

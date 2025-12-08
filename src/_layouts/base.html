@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="{{ lang or 'de' }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ description or 'Prozessautomatisierungs-Berater für KMU. Eliminiere repetitive Arbeit durch systematische Analyse und hands-on Implementierung.' }}">
+    <title>{{ title or 'Kevin Armbruster | Prozessautomatisierung in Berlin' }}</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kevinarmbruster.de{{ page.url }}">
+    <meta property="og:title" content="{{ title or 'Kevin Armbruster | Prozessautomatisierung in Berlin' }}">
+    <meta property="og:description" content="{{ description or 'Prozessautomatisierungs-Berater für KMU. Eliminiere repetitive Arbeit durch systematische Analyse und hands-on Implementierung.' }}">
+    <meta property="og:image" content="https://kevinarmbruster.de/images/{{ og_image or 'social.jpg' }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:site_name" content="Kevin Armbruster">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://kevinarmbruster.de{{ page.url }}">
+    <meta name="twitter:title" content="{{ title or 'Kevin Armbruster | Prozessautomatisierung in Berlin' }}">
+    <meta name="twitter:description" content="{{ description or 'Prozessautomatisierungs-Berater für KMU. Eliminiere repetitive Arbeit durch systematische Analyse und hands-on Implementierung.' }}">
+    <meta name="twitter:image" content="https://kevinarmbruster.de/images/{{ og_image or 'social.jpg' }}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- n8n Chat Widget Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    {% include "header.html" %}
+
+    {{ content }}
+
+    {% include "footer.html" %}
+    {% include "chatbot.html" %}
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

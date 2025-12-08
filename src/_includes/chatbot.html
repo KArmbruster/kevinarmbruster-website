@@ -1,0 +1,40 @@
+<!-- n8n Chat Widget -->
+<script type="module">
+    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+    createChat({
+        // Mode - set to 'window' for floating bubble
+        mode: 'window',
+
+        // n8n Webhook URL
+        webhookUrl: 'https://kevin-n8n.up.railway.app/webhook/d030c087-be85-4dc6-b30a-68c04c4725cc/chat',
+
+        // Webhook Config
+        webhookConfig: {
+            method: 'POST',
+            headers: {}
+        },
+
+        // Initial Messages
+        initialMessages: [
+            "Hi, ich bin Jake. Wie kann ich helfen?"
+        ],
+
+        i18n: {
+            en: {
+                title: 'KI-Chatbot 🤖',
+                subtitle: "",
+                footer: '',
+                getStarted: 'Neue Konversation',
+                inputPlaceholder: 'Schreibe deine Frage',
+            },
+        },
+
+        // Metadata (sent to n8n with each message)
+        metadata: {
+            language: 'de',
+            source: 'website',
+            page: window.location.pathname
+        }
+    });
+</script>
