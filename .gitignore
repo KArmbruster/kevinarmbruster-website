@@ -5,7 +5,8 @@ concept/
 node_modules/
 
 # Eleventy build output is committed (for GitHub Pages)
-# dist/ is NOT ignored - we need it for deployment
+# docs/ is NOT ignored - we need it for deployment
+dist/
 
 # OS files
 .DS_Store
