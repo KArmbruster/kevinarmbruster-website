@@ -19,7 +19,4 @@ Thumbs.db
 *.swo
 *~
 
-# Old files (keep originals for reference during migration)
-# Uncomment these after confirming new site works:
-# index.html
-# 404.html
+# Old files removed after migration to Eleventy
