@@ -17,6 +17,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Active page highlighting (excluding Kontakt button)
+    const currentPath = window.location.pathname;
+    const navLinkElements = navLinks.querySelectorAll('a:not(.btn-primary)');
+
+    navLinkElements.forEach(link => {
+        const linkPath = new URL(link.href).pathname;
+        // Exact match for most pages, or check if current path starts with link path for subpages
+        if (currentPath === linkPath ||
+            (linkPath !== '/' && currentPath.startsWith(linkPath))) {
+            link.classList.add('active');
+        }
+    });
+
     // Contact Form Submission (only if form exists on page)
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {

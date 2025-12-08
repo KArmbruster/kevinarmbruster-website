@@ -71,6 +71,18 @@ nav {
     color: var(--secondary);
 }
 
+.nav-links a.active {
+    color: var(--secondary);
+    font-weight: 600;
+}
+
+/* Kontakt button always stays white */
+.nav-links a.btn-primary,
+.nav-links a.btn-primary.active,
+.nav-links a.btn-primary:hover {
+    color: var(--white);
+}
+
 /* Mobile Navigation */
 .menu-toggle {
     display: none;
