@@ -41,7 +41,7 @@
 <body>
     {% include "header.html" %}
 
-    {{ content }}
+    {{ content | safe }}
 
     {% include "footer.html" %}
     {% include "chatbot.html" %}
