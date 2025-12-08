@@ -71,11 +71,6 @@ nav {
     color: var(--secondary);
 }
 
-.nav-links a.active {
-    color: var(--secondary);
-    font-weight: 600;
-}
-
 /* Mobile Navigation */
 .menu-toggle {
     display: none;
