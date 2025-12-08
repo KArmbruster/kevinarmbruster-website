@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Wie ich mit n8n ein automatisiertes Order Management System entwickelte, das 80% manuelle Arbeit eliminierte und 35 Stunden pro Monat einspart. Komplette Fallstudie mit technischen Details.">
+    <title>Veer.io Order Management System | Fallstudie | Kevin Armbruster</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kevinarmbruster.de/veerio/">
+    <meta property="og:title" content="Veer.io Order Management System | Fallstudie | Kevin Armbruster">
+    <meta property="og:description" content="Wie ich mit n8n ein automatisiertes Order Management System entwickelte, das 80% manuelle Arbeit eliminierte und 35 Stunden pro Monat einspart. Komplette Fallstudie mit technischen Details.">
+    <meta property="og:image" content="https://kevinarmbruster.de/images/social.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:site_name" content="Kevin Armbruster">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://kevinarmbruster.de/veerio/">
+    <meta name="twitter:title" content="Veer.io Order Management System | Fallstudie | Kevin Armbruster">
+    <meta name="twitter:description" content="Wie ich mit n8n ein automatisiertes Order Management System entwickelte, das 80% manuelle Arbeit eliminierte und 35 Stunden pro Monat einspart. Komplette Fallstudie mit technischen Details.">
+    <meta name="twitter:image" content="https://kevinarmbruster.de/images/social.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- n8n Chat Widget Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <nav>
+    <div class="nav-container">
+        <a href="/" class="logo">
+            <img src="/images/KA_logo.png" alt="Kevin Armbruster Logo">
+            Kevin Armbruster
+        </a>
+        <button class="menu-toggle" aria-label="Toggle navigation" id="menuToggle">
+            ☰
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about/">Über mich</a></li>
+            <li><a href="/services/">Services</a></li>
+            <li><a href="/#portfolio">Portfolio</a></li>
+            <li><a href="/#contact" class="btn-primary">Kontakt</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+    
+&lt;!-- Hero Section --&gt;
+&lt;section class=&quot;hero&quot;&gt;
+    &lt;div class=&quot;hero-container&quot; style=&quot;grid-template-columns: 1fr;&quot;&gt;
+        &lt;div class=&quot;hero-content&quot; style=&quot;text-align: center; max-width: 1000px; margin: 0 auto;&quot;&gt;
+            &lt;h2 style=&quot;font-size: 0.875rem; color: var(--secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;&quot;&gt;FALLSTUDIE&lt;/h2&gt;
+            &lt;h1&gt;Veer.io Order Management System&lt;/h1&gt;
+            &lt;p style=&quot;font-size: 1.25rem;&quot;&gt;
+                Automatisierter Bestellprozess von Kundenanfrage bis Installation – mit n8n, NocoDB und Web-Portal
+            &lt;/p&gt;
+
+            &lt;!-- Quick Stats --&gt;
+            &lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem; text-align: center;&quot;&gt;
+                &lt;div&gt;
+                    &lt;h3 style=&quot;color: var(--secondary); font-size: 2.5rem; margin-bottom: 0.5rem;&quot;&gt;80%&lt;/h3&gt;
+                    &lt;p&gt;Reduktion manueller Arbeit&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;h3 style=&quot;color: var(--secondary); font-size: 2.5rem; margin-bottom: 0.5rem;&quot;&gt;~35h&lt;/h3&gt;
+                    &lt;p&gt;Zeitersparnis pro Monat&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;h3 style=&quot;color: var(--secondary); font-size: 2.5rem; margin-bottom: 0.5rem;&quot;&gt;~€8.000&lt;/h3&gt;
+                    &lt;p&gt;Kosteneinsparung pro Jahr&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- Project Overview --&gt;
+&lt;section class=&quot;about&quot; style=&quot;background: var(--white);&quot;&gt;
+    &lt;div class=&quot;about-container&quot; style=&quot;grid-template-columns: 1fr; gap: 2rem;&quot;&gt;
+        &lt;div class=&quot;about-content&quot;&gt;
+            &lt;h2&gt;PROJEKT-ÜBERBLICK&lt;/h2&gt;
+
+            &lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;&quot;&gt;
+                &lt;div&gt;
+                    &lt;h4 style=&quot;color: var(--secondary); margin-bottom: 0.5rem;&quot;&gt;Client&lt;/h4&gt;
+                    &lt;p&gt;Veer.io – Anbieter von Strom-Messgeräten für Solaranlagen&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;h4 style=&quot;color: var(--secondary); margin-bottom: 0.5rem;&quot;&gt;Herausforderung&lt;/h4&gt;
+                    &lt;p&gt;Excel-Chaos, manuelle WhatsApp-Kommunikation, keine Datenvalidierung, fehlende Prozess-Übersicht&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;h4 style=&quot;color: var(--secondary); margin-bottom: 0.5rem;&quot;&gt;Lösung&lt;/h4&gt;
+                    &lt;p&gt;Automatisiertes System mit n8n, NocoDB-Datenbank und Partner-Portal&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;h4 style=&quot;color: var(--secondary); margin-bottom: 0.5rem;&quot;&gt;Timeline&lt;/h4&gt;
+                    &lt;p&gt;8 Wochen von Discovery bis Go-Live&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div style=&quot;margin-top: 2rem; padding: 1.5rem; background: var(--bg-light); border-radius: 8px;&quot;&gt;
+                &lt;h4 style=&quot;color: var(--primary); margin-bottom: 1rem;&quot;&gt;Tools &amp; Technologien&lt;/h4&gt;
+                &lt;div style=&quot;display: flex; flex-wrap: wrap; gap: 0.75rem;&quot;&gt;
+                    &lt;span style=&quot;background: var(--white); padding: 0.5rem 1rem; border-radius: 4px; font-size: 0.875rem;&quot;&gt;n8n&lt;/span&gt;
+                    &lt;span style=&quot;background: var(--white); padding: 0.5rem 1rem; border-radius: 4px; font-size: 0.875rem;&quot;&gt;NocoDB&lt;/span&gt;
+                    &lt;span style=&quot;background: var(--white); padding: 0.5rem 1rem; border-radius: 4px; font-size: 0.875rem;&quot;&gt;Railway (Hosting)&lt;/span&gt;
+                    &lt;span style=&quot;background: var(--white); padding: 0.5rem 1rem; border-radius: 4px; font-size: 0.875rem;&quot;&gt;Web Development (Cursor)&lt;/span&gt;
+                    &lt;span style=&quot;background: var(--white); padding: 0.5rem 1rem; border-radius: 4px; font-size: 0.875rem;&quot;&gt;WhatsApp API&lt;/span&gt;
+                    &lt;span style=&quot;background: var(--white); padding: 0.5rem 1rem; border-radius: 4px; font-size: 0.875rem;&quot;&gt;Microsoft Outlook/Sharepoint&lt;/span&gt;
+                    &lt;span style=&quot;background: var(--white); padding: 0.5rem 1rem; border-radius: 4px; font-size: 0.875rem;&quot;&gt;Telegram&lt;/span&gt;
+                    &lt;span style=&quot;background: var(--white); padding: 0.5rem 1rem; border-radius: 4px; font-size: 0.875rem;&quot;&gt;BPMN&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- Situation --&gt;
+&lt;section class=&quot;services&quot;&gt;
+    &lt;div class=&quot;section-header&quot;&gt;
+        &lt;h2&gt;AUSGANGSSITUATION&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;max-width: 900px; margin: 0 auto;&quot;&gt;
+        &lt;div style=&quot;background: var(--white); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);&quot;&gt;
+            &lt;p style=&quot;font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.5rem;&quot;&gt;
+                Der CEO von Veer.io kontaktierte mich mit der Bitte, das Auftragsmanagement seiner Firma zu automatisieren.
+            &lt;/p&gt;
+
+            &lt;h3 style=&quot;color: var(--primary); margin-bottom: 1rem;&quot;&gt;Das bestehende System:&lt;/h3&gt;
+            &lt;ul style=&quot;color: #666; line-height: 1.8;&quot;&gt;
+                &lt;li&gt;&lt;strong&gt;Excel-Tabellen:&lt;/strong&gt; Alle Aufträge in einer riesigen Spreadsheet mit Freitext-Kommentaren&lt;/li&gt;
+                &lt;li&gt;&lt;strong&gt;Manuelle Prüfung:&lt;/strong&gt; Mitarbeiterin musste regelmäßig Tabelle filtern, um überfällige Termine zu identifizieren&lt;/li&gt;
+                &lt;li&gt;&lt;strong&gt;WhatsApp-Kommunikation:&lt;/strong&gt; Installationstermine per WhatsApp mitgeteilt, dann händisch ins Spreadsheet kopiert&lt;/li&gt;
+                &lt;li&gt;&lt;strong&gt;Outlook-Kontakte:&lt;/strong&gt; Partner-Kontakte in separatem System ohne Verknüpfung&lt;/li&gt;
+                &lt;li&gt;&lt;strong&gt;Fehlende Datenintegrität:&lt;/strong&gt; Projekte wussten, welche Geräte enthalten sind – aber Geräte wussten nicht, in welchem Projekt sie sind&lt;/li&gt;
+                &lt;li&gt;&lt;strong&gt;Keine Validierung:&lt;/strong&gt; Installationspartner machten Fehler beim Ausfüllen von Formularen (50% Fehlerquote)&lt;/li&gt;
+            &lt;/ul&gt;
+
+            &lt;p style=&quot;margin-top: 1.5rem; padding: 1rem; background: var(--bg-light); border-radius: 8px; font-style: italic;&quot;&gt;
+                &quot;Die Mitarbeiterin verbrachte ~5 Stunden pro Woche nur damit, überfällige Projekte zu identifizieren und Partner zu erinnern.&quot;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- Task &amp; Goals --&gt;
+&lt;section class=&quot;about&quot; style=&quot;background: var(--white);&quot;&gt;
+    &lt;div class=&quot;about-container&quot; style=&quot;grid-template-columns: 1fr; gap: 2rem;&quot;&gt;
+        &lt;div class=&quot;about-content&quot;&gt;
+            &lt;h2&gt;AUFGABE &amp; ZIELE&lt;/h2&gt;
+            &lt;h3&gt;CEO Workshop: Strategische Ausrichtung&lt;/h3&gt;
+
+            &lt;p&gt;Meine erste Aufgabe bestand darin, herauszufinden, worauf es dem CEO genau ankommt. Ich organisierte einen 90-minütigen Workshop, um die wichtigsten Business-Ziele zu ermitteln:&lt;/p&gt;
+
+            &lt;div style=&quot;display: grid; gap: 1.5rem; margin-top: 2rem;&quot;&gt;
+                &lt;div style=&quot;display: grid; grid-template-columns: 200px 1fr 100px; gap: 1rem; align-items: center;&quot;&gt;
+                    &lt;strong&gt;Kosten reduzieren?&lt;/strong&gt;
+                    &lt;p style=&quot;margin: 0;&quot;&gt;Nein, es bleibt bei einer Mitarbeiterin&lt;/p&gt;
+                    &lt;span style=&quot;color: #999;&quot;&gt;—&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div style=&quot;display: grid; grid-template-columns: 200px 1fr 100px; gap: 1rem; align-items: center;&quot;&gt;
+                    &lt;strong&gt;Prozess beschleunigen?&lt;/strong&gt;
+                    &lt;p style=&quot;margin: 0;&quot;&gt;Ja, Mitarbeiterin entlasten&lt;/p&gt;
+                    &lt;span style=&quot;color: var(--secondary); font-weight: 600;&quot;&gt;50%&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div style=&quot;display: grid; grid-template-columns: 200px 1fr 100px; gap: 1rem; align-items: center;&quot;&gt;
+                    &lt;strong&gt;Fehler reduzieren?&lt;/strong&gt;
+                    &lt;p style=&quot;margin: 0;&quot;&gt;Ja, Datenvalidierung implementieren&lt;/p&gt;
+                    &lt;span style=&quot;color: var(--secondary); font-weight: 600;&quot;&gt;30%&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div style=&quot;display: grid; grid-template-columns: 200px 1fr 100px; gap: 1rem; align-items: center;&quot;&gt;
+                    &lt;strong&gt;Überblick gewinnen?&lt;/strong&gt;
+                    &lt;p style=&quot;margin: 0;&quot;&gt;Ja, schnell sehen wo Geräte sind&lt;/p&gt;
+                    &lt;span style=&quot;color: var(--secondary); font-weight: 600;&quot;&gt;20%&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div style=&quot;display: grid; grid-template-columns: 200px 1fr 100px; gap: 1rem; align-items: center;&quot;&gt;
+                    &lt;strong&gt;Wachstum vorbereiten?&lt;/strong&gt;
+                    &lt;p style=&quot;margin: 0;&quot;&gt;Nein, gleichbleibender Umsatz erwartet&lt;/p&gt;
+                    &lt;span style=&quot;color: #999;&quot;&gt;—&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div style=&quot;margin-top: 2rem; padding: 1.5rem; background: var(--bg-light); border-radius: 8px; border-left: 4px solid var(--secondary);&quot;&gt;
+                &lt;h4 style=&quot;color: var(--primary); margin-bottom: 0.5rem;&quot;&gt;Klare Ziele definiert:&lt;/h4&gt;
+                &lt;ul style=&quot;list-style: none; padding-left: 0;&quot;&gt;
+                    &lt;li&gt;✓ &lt;strong&gt;50%:&lt;/strong&gt; Mitarbeiterin zeitlich entlasten&lt;/li&gt;
+                    &lt;li&gt;✓ &lt;strong&gt;30%:&lt;/strong&gt; Fehleranfälligkeit bei Partner-Interaktion reduzieren&lt;/li&gt;
+                    &lt;li&gt;✓ &lt;strong&gt;20%:&lt;/strong&gt; Übersicht über den Prozess gewinnen&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- Action: 10 Phases --&gt;
+&lt;section class=&quot;services&quot;&gt;
+    &lt;div class=&quot;section-header&quot;&gt;
+        &lt;h2&gt;UMSETZUNG: 10 PROJEKT-PHASEN&lt;/h2&gt;
+        &lt;p style=&quot;max-width: 800px; margin: 1rem auto 0;&quot;&gt;Von der Prozessanalyse bis zum Impact-Messung – ein systematischer Ansatz&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;max-width: 1000px; margin: 0 auto;&quot;&gt;
+
+        &lt;!-- Phase 1: Verstehen &amp; Visualisieren --&gt;
+        &lt;div style=&quot;background: var(--white); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 1.5rem;&quot;&gt;
+            &lt;h3 style=&quot;color: var(--primary); margin-bottom: 1rem;&quot;&gt;Phase 1: Verstehen &amp; Visualisieren&lt;/h3&gt;
+            &lt;p style=&quot;margin-bottom: 1rem;&quot;&gt;&lt;strong&gt;Ziel:&lt;/strong&gt; Den gesamten Prozess verstehen und Bottlenecks identifizieren&lt;/p&gt;
+
+            &lt;h4 style=&quot;font-size: 1rem; margin-bottom: 0.5rem;&quot;&gt;Vorgehen:&lt;/h4&gt;
+            &lt;ol style=&quot;color: #666; line-height: 1.8;&quot;&gt;
+                &lt;li&gt;CEO-Erklärung des groben Prozesses + bestehende Dokumentation in Miro lesen&lt;/li&gt;
+                &lt;li&gt;Mit erstem Verständnis ein BPMN-Flowchart erstellen&lt;/li&gt;
+                &lt;li&gt;Mitarbeiterin den ganzen Prozess im Detail zeigen lassen&lt;/li&gt;
+                &lt;li&gt;Details im Flowchart ergänzen und vermerken, wo Schritte lange dauern&lt;/li&gt;
+            &lt;/ol&gt;
+
+            &lt;div style=&quot;margin-top: 1rem; padding: 1rem; background: var(--bg-light); border-radius: 8px;&quot;&gt;
+                &lt;strong&gt;Ergebnis:&lt;/strong&gt; BPMN-Flowcharts mit aktuellem Geschäftsprozess und potenziellen Automatisierungs-Kandidaten
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Phase 2: Analysieren &amp; Priorisieren --&gt;
+        &lt;div style=&quot;background: var(--white); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 1.5rem;&quot;&gt;
+            &lt;h3 style=&quot;color: var(--primary); margin-bottom: 1rem;&quot;&gt;Phase 2: Analysieren &amp; Priorisieren&lt;/h3&gt;
+            &lt;p style=&quot;margin-bottom: 1rem;&quot;&gt;&lt;strong&gt;Ziel:&lt;/strong&gt; Entscheiden, welche Prozesse das größte Automatisierungs-Potenzial haben&lt;/p&gt;
+
+            &lt;h4 style=&quot;font-size: 1rem; margin-bottom: 0.5rem;&quot;&gt;KPI-Definition basierend auf Business-Zielen:&lt;/h4&gt;
+            &lt;ul style=&quot;color: #666; line-height: 1.8;&quot;&gt;
+                &lt;li&gt;&lt;strong&gt;Zeitaufwand pro Bestellung&lt;/strong&gt; in Minuten (Hauptmetrik)&lt;/li&gt;
+                &lt;li&gt;&lt;strong&gt;Fehlerrate pro Bestellung&lt;/strong&gt; in %&lt;/li&gt;
+                &lt;li&gt;&lt;strong&gt;Übersichtlichkeit&lt;/strong&gt; auf Skala 1-10&lt;/li&gt;
+            &lt;/ul&gt;
+
+            &lt;p style=&quot;margin-top: 1rem;&quot;&gt;Da es kein zentrales Tracking gab, habe ich die Werte mit Schätzungen der Mitarbeiterin gefüllt. Dann für jeden Prozess bewertet:&lt;/p&gt;
+            &lt;ul style=&quot;color: #666; line-height: 1.8;&quot;&gt;
+                &lt;li&gt;Ist Automatisierung möglich?&lt;/li&gt;
+                &lt;li&gt;Wie aufwändig wäre die Implementierung?&lt;/li&gt;
+                &lt;li&gt;Wie stark verbessern sich die KPIs?&lt;/li&gt;
+                &lt;li&gt;CEO-Gewichtung der Ziele berücksichtigen&lt;/li&gt;
+            &lt;/ul&gt;
+
+            &lt;div style=&quot;margin-top: 1rem; padding: 1rem; background: var(--bg-light); border-radius: 8px;&quot;&gt;
+                &lt;strong&gt;Ergebnis:&lt;/strong&gt; Priorisierte Liste an Automatisierungs-Projekten
+                &lt;ul style=&quot;margin-top: 0.5rem; margin-bottom: 0;&quot;&gt;
+                    &lt;li&gt;&lt;strong&gt;#1:&lt;/strong&gt; Identifizieren überfälliger Projekte + Erinnerungen (~5h/Woche, komplett automatisierbar)&lt;/li&gt;
+                    &lt;li&gt;&lt;strong&gt;#2:&lt;/strong&gt; Validierung der Dateneingabe (50% Fehlerquote eliminieren)&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Phase 3: Entwurf der Lösung --&gt;
+        &lt;div style=&quot;background: var(--white); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 1.5rem;&quot;&gt;
+            &lt;h3 style=&quot;color: var(--primary); margin-bottom: 1rem;&quot;&gt;Phase 3: Entwurf der Lösung&lt;/h3&gt;
+            &lt;p style=&quot;margin-bottom: 1rem;&quot;&gt;&lt;strong&gt;Ziel:&lt;/strong&gt; Technische Lösung entwerfen inklusive Software-Auswahl und SOLL-Prozesse&lt;/p&gt;
+
+            &lt;h4 style=&quot;font-size: 1rem; margin-bottom: 0.5rem;&quot;&gt;Architektur-Entscheidungen:&lt;/h4&gt;
+            &lt;div style=&quot;display: grid; gap: 1rem; margin-top: 1rem;&quot;&gt;
+                &lt;div style=&quot;padding: 1rem; background: var(--bg-light); border-radius: 8px;&quot;&gt;
+                    &lt;strong&gt;Datenbank: NocoDB&lt;/strong&gt;
+                    &lt;p style=&quot;margin: 0.5rem 0 0; color: #666;&quot;&gt;Ermöglicht Eingabevalidierung (z.B. Datumsformat) und bietet bessere API-Anbindung als Excel&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div style=&quot;padding: 1rem; background: var(--bg-light); border-radius: 8px;&quot;&gt;
+                    &lt;strong&gt;Workflow Automation: n8n&lt;/strong&gt;
+                    &lt;p style=&quot;margin: 0.5rem 0 0; color: #666;&quot;&gt;Umfangreiche Erfahrung damit + kann auf privatem Server (Railway) gehostet werden = Kundendaten bleiben in Deutschland&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div style=&quot;padding: 1rem; background: var(--bg-light); border-radius: 8px;&quot;&gt;
+                    &lt;strong&gt;Partner-Portal: Custom Web App&lt;/strong&gt;
+                    &lt;p style=&quot;margin: 0.5rem 0 0; color: #666;&quot;&gt;Partner sehen alle ihre Projekte + Hinweise auf fehlende Informationen. Gebaut mit Cursor, gehostet auf Railway&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div style=&quot;padding: 1rem; background: var(--bg-light); border-radius: 8px;&quot;&gt;
+                    &lt;strong&gt;Hosting: Railway&lt;/strong&gt;
+                    &lt;p style=&quot;margin: 0.5rem 0 0; color: #666;&quot;&gt;Ein Server für Datenbank, n8n Backend UND Portal-Frontend = minimale Kosten&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div style=&quot;margin-top: 1rem; padding: 1rem; background: #d4edda; border-radius: 8px; border-left: 4px solid #28a745;&quot;&gt;
+                &lt;strong&gt;CEO-Feedback:&lt;/strong&gt; &quot;Ich bin besonders glücklich, dass nur minimale Kosten für das ganze System entstehen.&quot;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Phase 4: Proof of Concept --&gt;
+        &lt;div style=&quot;background: var(--white); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 1.5rem;&quot;&gt;
+            &lt;h3 style=&quot;color: var(--primary); margin-bottom: 1rem;&quot;&gt;Phase 4: Proof of Concept&lt;/h3&gt;
+            &lt;p style=&quot;margin-bottom: 1rem;&quot;&gt;&lt;strong&gt;Ziel:&lt;/strong&gt; Technische Machbarkeit beweisen und User Interface validieren&lt;/p&gt;
+
+            &lt;h4 style=&quot;font-size: 1rem; margin-bottom: 0.5rem;&quot;&gt;Durchgeführte Tests:&lt;/h4&gt;
+            &lt;ul style=&quot;color: #666; line-height: 1.8;&quot;&gt;
+                &lt;li&gt;Server auf Railway aufgesetzt mit n8n und NocoDB&lt;/li&gt;
+                &lt;li&gt;API-Zugang für alle Systeme eingerichtet: NocoDB, WhatsApp, Microsoft Sharepoint, Outlook, Telegram, Slack&lt;/li&gt;
+                &lt;li&gt;Kern-Workflows grob in n8n abgebildet:
+                    &lt;ul&gt;
+                        &lt;li&gt;Täglich alle laufenden Projekte auslesen&lt;/li&gt;
+                        &lt;li&gt;Überfällige Termine identifizieren&lt;/li&gt;
+                        &lt;li&gt;WhatsApp-Nachrichten an Partner senden&lt;/li&gt;
+                        &lt;li&gt;Bei großer Verspätung: E-Mail an Mitarbeiterin&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/li&gt;
+                &lt;li&gt;Formular-Workflow: Projektnummer + Installationsdatum abfragen → in Datenbank eintragen → Benachrichtigung senden&lt;/li&gt;
+                &lt;li&gt;Simple Partner-Portal-Webseite mit Veer.io-Branding + Datenbank-Anbindung + Login-System&lt;/li&gt;
+            &lt;/ul&gt;
+
+            &lt;div style=&quot;margin-top: 1rem; padding: 1rem; background: var(--bg-light); border-radius: 8px;&quot;&gt;
+                &lt;strong&gt;Ergebnis nach 2 Wochen:&lt;/strong&gt; Alle APIs funktionieren. User Interfaces von Webseite und Datenbank abgesegnet. Noch kein Error-Handling – Fokus war auf &quot;Erfüllt es die Bedürfnisse?&quot;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Phase 5: Implementierung --&gt;
+        &lt;div style=&quot;background: var(--white); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 1.5rem;&quot;&gt;
+            &lt;h3 style=&quot;color: var(--primary); margin-bottom: 1rem;&quot;&gt;Phase 5: Implementierung&lt;/h3&gt;
+            &lt;p style=&quot;margin-bottom: 1rem;&quot;&gt;&lt;strong&gt;Ziel:&lt;/strong&gt; Alle Workflows fertig ausarbeiten mit robustem Error-Handling + komplettes Web-Frontend&lt;/p&gt;
+
+            &lt;h4 style=&quot;font-size: 1rem; margin-bottom: 0.5rem;&quot;&gt;Entwicklungsprozess:&lt;/h4&gt;
+            &lt;ol style=&quot;color: #666; line-height: 1.8;&quot;&gt;
+                &lt;li&gt;&lt;strong&gt;Test-Environment:&lt;/strong&gt; Datenbank mit Dummy-Daten gefüllt, nur eigene E-Mail/Telefonnummer verwendet&lt;/li&gt;
+                &lt;li&gt;&lt;strong&gt;n8n Workflows:&lt;/strong&gt; Alle Workflows nacheinander gebaut und getestet – gesamte Business-Logik abgedeckt&lt;/li&gt;
+                &lt;li&gt;&lt;strong&gt;Web-Frontend:&lt;/strong&gt; Mit Cursor und Claude Code entwickelt, GitHub für Versionierung
+                    &lt;ul&gt;
+                        &lt;li&gt;Ausgiebige Datenvalidierung in Formularen&lt;/li&gt;
+                        &lt;li&gt;Partner können nur Geräte auswählen, die aktuell in ihrem Inventar sind&lt;/li&gt;
+                        &lt;li&gt;Zuvor: Beliebige Zahlen ins Excel-Sheet eintragbar → jetzt: 100% validiert&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/li&gt;
+                &lt;li&gt;&lt;strong&gt;User Testing:&lt;/strong&gt; Mitarbeiterin Test-Account im Portal → Partner-Perspektive ausprobieren → ergänzende Wünsche implementiert&lt;/li&gt;
+            &lt;/ol&gt;
+
+            &lt;div style=&quot;margin-top: 1rem; padding: 1rem; background: var(--bg-light); border-radius: 8px;&quot;&gt;
+                &lt;strong&gt;Ergebnis:&lt;/strong&gt; System bildet gesamten Lebenszyklus ab – von erster Kundenanfrage bis zur letzten Freigabe. Von vorne bis hinten durchgetestet und funktioniert einwandfrei.
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Phase 6: Dokumentation &amp; Training --&gt;
+        &lt;div style=&quot;background: var(--white); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 1.5rem;&quot;&gt;
+            &lt;h3 style=&quot;color: var(--primary); margin-bottom: 1rem;&quot;&gt;Phase 6: Dokumentation &amp; Training&lt;/h3&gt;
+            &lt;p style=&quot;margin-bottom: 1rem;&quot;&gt;&lt;strong&gt;Ziel:&lt;/strong&gt; Sicherstellen, dass die Lösung langfristig ohne mich funktioniert&lt;/p&gt;
+
+            &lt;h4 style=&quot;font-size: 1rem; margin-bottom: 0.5rem;&quot;&gt;Tell-Show-Do-Review Ansatz:&lt;/h4&gt;
+            &lt;div style=&quot;display: grid; gap: 1rem; margin-top: 1rem;&quot;&gt;
+                &lt;div style=&quot;padding-left: 1rem; border-left: 4px solid var(--secondary);&quot;&gt;
+                    &lt;strong&gt;1. TELL:&lt;/strong&gt; 5 Seiten schriftliche Dokumentation – Nutzen der Software + alle Schritte erklärt
+                &lt;/div&gt;
+                &lt;div style=&quot;padding-left: 1rem; border-left: 4px solid var(--secondary);&quot;&gt;
+                    &lt;strong&gt;2. SHOW:&lt;/strong&gt; 20-Minuten Video – gesamten Prozess durchgespielt und erklärt
+                &lt;/div&gt;
+                &lt;div style=&quot;padding-left: 1rem; border-left: 4px solid var(--secondary);&quot;&gt;
+                    &lt;strong&gt;3. DO:&lt;/strong&gt; 1 Stunde Meeting – Mitarbeiterin spielt Prozess komplett durch, ich beobachte nur
+                &lt;/div&gt;
+                &lt;div style=&quot;padding-left: 1rem; border-left: 4px solid var(--secondary);&quot;&gt;
+                    &lt;strong&gt;4. REVIEW:&lt;/strong&gt; Feedback einholen, offene Fragen klären
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div style=&quot;margin-top: 1rem; padding: 1rem; background: var(--bg-light); border-radius: 8px;&quot;&gt;
+                &lt;strong&gt;Ergebnis:&lt;/strong&gt; Mitarbeiterin kann Software komplett selbständig bedienen. Ein Feature-Wunsch wurde noch ergänzt, der erst bei Bedienung eingefallen ist.
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Phase 7: Go-Live --&gt;
+        &lt;div style=&quot;background: var(--white); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 1.5rem;&quot;&gt;
+            &lt;h3 style=&quot;color: var(--primary); margin-bottom: 1rem;&quot;&gt;Phase 7: Go-Live&lt;/h3&gt;
+            &lt;p style=&quot;margin-bottom: 1rem;&quot;&gt;&lt;strong&gt;Ziel:&lt;/strong&gt; Daten migrieren und alle Partner auf neues System umstellen&lt;/p&gt;
+
+            &lt;h4 style=&quot;font-size: 1rem; margin-bottom: 0.5rem;&quot;&gt;Migration &amp; Rollout:&lt;/h4&gt;
+            &lt;ol style=&quot;color: #666; line-height: 1.8;&quot;&gt;
+                &lt;li&gt;&lt;strong&gt;Datenbereinigung:&lt;/strong&gt; Spreadsheet-Daten bereinigen für sauberes 1:1 Match mit Datenbank-Spalten&lt;/li&gt;
+                &lt;li&gt;&lt;strong&gt;Datenimport:&lt;/strong&gt; Aus Spreadsheet in NocoDB-Datenbank importieren&lt;/li&gt;
+                &lt;li&gt;&lt;strong&gt;Partner-Kommunikation:&lt;/strong&gt; E-Mail an alle Partner mit Login-Instruktionen für neues Portal&lt;/li&gt;
+            &lt;/ol&gt;
+
+            &lt;div style=&quot;margin-top: 1rem; padding: 1rem; background: var(--bg-light); border-radius: 8px;&quot;&gt;
+                &lt;strong&gt;Ergebnis:&lt;/strong&gt; Tägliches Geschäft läuft über das neue System. Kein manuelles Excel-Management mehr.
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Phase 8: Impact-Messung --&gt;
+        &lt;div style=&quot;background: var(--white); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);&quot;&gt;
+            &lt;h3 style=&quot;color: var(--primary); margin-bottom: 1rem;&quot;&gt;Phase 8: Impact-Messung&lt;/h3&gt;
+            &lt;p style=&quot;margin-bottom: 1rem;&quot;&gt;&lt;strong&gt;Ziel:&lt;/strong&gt; Konkreten Business-Impact messen und ROI beweisen&lt;/p&gt;
+
+            &lt;h4 style=&quot;font-size: 1rem; margin-bottom: 0.5rem;&quot;&gt;Messmethodik:&lt;/h4&gt;
+            &lt;ul style=&quot;color: #666; line-height: 1.8;&quot;&gt;
+                &lt;li&gt;Gleiche KPIs wie zur Prozess-Priorisierung nochmal gemessen&lt;/li&gt;
+                &lt;li&gt;Zeitersparnis pro Woche berechnet&lt;/li&gt;
+                &lt;li&gt;Monatlicher ROI ermittelt&lt;/li&gt;
+                &lt;li&gt;Amortisationszeit kalkuliert (Investitionskosten / monatliche Einsparung)&lt;/li&gt;
+                &lt;li&gt;Follow-up nach 1, 3 und 6 Wochen für Problem-Behebung&lt;/li&gt;
+            &lt;/ul&gt;
+
+            &lt;div style=&quot;margin-top: 1rem; padding: 1.5rem; background: #d4edda; border-radius: 8px; border-left: 4px solid #28a745;&quot;&gt;
+                &lt;h4 style=&quot;color: #28a745; margin-bottom: 1rem;&quot;&gt;Messbare Ergebnisse:&lt;/h4&gt;
+                &lt;ul style=&quot;list-style: none; padding-left: 0; margin: 0;&quot;&gt;
+                    &lt;li style=&quot;margin-bottom: 0.5rem;&quot;&gt;✓ &lt;strong&gt;80% Reduktion manueller Arbeit&lt;/strong&gt;&lt;/li&gt;
+                    &lt;li style=&quot;margin-bottom: 0.5rem;&quot;&gt;✓ &lt;strong&gt;~35 Stunden/Monat eingespart&lt;/strong&gt;&lt;/li&gt;
+                    &lt;li style=&quot;margin-bottom: 0.5rem;&quot;&gt;✓ &lt;strong&gt;~€8.000/Jahr Kosteneinsparung&lt;/strong&gt;&lt;/li&gt;
+                    &lt;li&gt;✓ &lt;strong&gt;50% Fehlerreduktion&lt;/strong&gt; durch Datenvalidierung&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- Technical Deep-Dive --&gt;
+&lt;section class=&quot;about&quot; style=&quot;background: var(--white);&quot;&gt;
+    &lt;div class=&quot;about-container&quot; style=&quot;grid-template-columns: 1fr; gap: 2rem;&quot;&gt;
+        &lt;div class=&quot;about-content&quot;&gt;
+            &lt;h2&gt;TECHNISCHE ARCHITEKTUR&lt;/h2&gt;
+
+            &lt;div style=&quot;display: grid; gap: 2rem; margin-top: 2rem;&quot;&gt;
+                &lt;div&gt;
+                    &lt;h3 style=&quot;color: var(--secondary); margin-bottom: 1rem;&quot;&gt;System-Komponenten&lt;/h3&gt;
+                    &lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;&quot;&gt;
+                        &lt;div style=&quot;padding: 1.5rem; background: var(--bg-light); border-radius: 8px;&quot;&gt;
+                            &lt;h4 style=&quot;color: var(--primary); margin-bottom: 0.5rem;&quot;&gt;NocoDB Datenbank&lt;/h4&gt;
+                            &lt;p style=&quot;color: #666; font-size: 0.95rem;&quot;&gt;Zentrale Datenhaltung für Projekte, Geräte, Partner. Eingabevalidierung, Relationen, API-Zugriff&lt;/p&gt;
+                        &lt;/div&gt;
+                        &lt;div style=&quot;padding: 1.5rem; background: var(--bg-light); border-radius: 8px;&quot;&gt;
+                            &lt;h4 style=&quot;color: var(--primary); margin-bottom: 0.5rem;&quot;&gt;n8n Workflows&lt;/h4&gt;
+                            &lt;p style=&quot;color: #666; font-size: 0.95rem;&quot;&gt;Automatisierte Prozesse: Überfälligkeits-Check, Erinnerungen, Datenvalidierung, Benachrichtigungen&lt;/p&gt;
+                        &lt;/div&gt;
+                        &lt;div style=&quot;padding: 1.5rem; background: var(--bg-light); border-radius: 8px;&quot;&gt;
+                            &lt;h4 style=&quot;color: var(--primary); margin-bottom: 0.5rem;&quot;&gt;Partner-Portal&lt;/h4&gt;
+                            &lt;p style=&quot;color: #666; font-size: 0.95rem;&quot;&gt;Web-App für Partner: Projekt-Übersicht, Formular-Eingaben, Inventar-Management, Login-System&lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div&gt;
+                    &lt;h3 style=&quot;color: var(--secondary); margin-bottom: 1rem;&quot;&gt;API-Integrationen&lt;/h3&gt;
+                    &lt;ul style=&quot;color: #666; line-height: 1.8;&quot;&gt;
+                        &lt;li&gt;&lt;strong&gt;WhatsApp Business API:&lt;/strong&gt; Automatische Erinnerungen an Installationspartner&lt;/li&gt;
+                        &lt;li&gt;&lt;strong&gt;Microsoft Outlook:&lt;/strong&gt; E-Mail-Benachrichtigungen an Mitarbeiterin&lt;/li&gt;
+                        &lt;li&gt;&lt;strong&gt;Microsoft Sharepoint:&lt;/strong&gt; Dokumenten-Ablage&lt;/li&gt;
+                        &lt;li&gt;&lt;strong&gt;Telegram/Slack:&lt;/strong&gt; Interne Benachrichtigungen&lt;/li&gt;
+                        &lt;li&gt;&lt;strong&gt;NocoDB REST API:&lt;/strong&gt; Datenbank-Zugriff aus n8n und Web-Portal&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+
+                &lt;div&gt;
+                    &lt;h3 style=&quot;color: var(--secondary); margin-bottom: 1rem;&quot;&gt;Key Features&lt;/h3&gt;
+                    &lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;&quot;&gt;
+                        &lt;div style=&quot;padding: 1rem; background: var(--bg-light); border-radius: 8px;&quot;&gt;
+                            &lt;strong&gt;Automatische Erinnerungen&lt;/strong&gt;
+                            &lt;p style=&quot;margin: 0.5rem 0 0; color: #666; font-size: 0.875rem;&quot;&gt;Täglich überfällige Projekte identifizieren und Partner per WhatsApp erinnern&lt;/p&gt;
+                        &lt;/div&gt;
+                        &lt;div style=&quot;padding: 1rem; background: var(--bg-light); border-radius: 8px;&quot;&gt;
+                            &lt;strong&gt;Datenvalidierung&lt;/strong&gt;
+                            &lt;p style=&quot;margin: 0.5rem 0 0; color: #666; font-size: 0.875rem;&quot;&gt;Formulare mit strikter Validierung – nur verfügbare Geräte auswählbar&lt;/p&gt;
+                        &lt;/div&gt;
+                        &lt;div style=&quot;padding: 1rem; background: var(--bg-light); border-radius: 8px;&quot;&gt;
+                            &lt;strong&gt;Echtzeit-Übersicht&lt;/strong&gt;
+                            &lt;p style=&quot;margin: 0.5rem 0 0; color: #666; font-size: 0.875rem;&quot;&gt;Dashboard zeigt wo wie viele Messgeräte gelagert/installiert sind&lt;/p&gt;
+                        &lt;/div&gt;
+                        &lt;div style=&quot;padding: 1rem; background: var(--bg-light); border-radius: 8px;&quot;&gt;
+                            &lt;strong&gt;Benachrichtigungssystem&lt;/strong&gt;
+                            &lt;p style=&quot;margin: 0.5rem 0 0; color: #666; font-size: 0.875rem;&quot;&gt;Multi-Channel: WhatsApp, E-Mail, Telegram für verschiedene Stakeholder&lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- Before/After Comparison --&gt;
+&lt;section class=&quot;services&quot;&gt;
+    &lt;div class=&quot;section-header&quot;&gt;
+        &lt;h2&gt;VORHER / NACHHER&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;max-width: 1000px; margin: 0 auto;&quot;&gt;
+        &lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 2rem;&quot;&gt;
+
+            &lt;!-- Before --&gt;
+            &lt;div style=&quot;background: var(--white); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);&quot;&gt;
+                &lt;h3 style=&quot;color: #dc3545; margin-bottom: 1.5rem;&quot;&gt;❌ Vorher&lt;/h3&gt;
+                &lt;ul style=&quot;color: #666; line-height: 2;&quot;&gt;
+                    &lt;li&gt;Riesige Excel-Tabellen mit Freitext-Kommentaren&lt;/li&gt;
+                    &lt;li&gt;Manuelle Prüfung überfälliger Termine (~5h/Woche)&lt;/li&gt;
+                    &lt;li&gt;WhatsApp-Kommunikation händisch kopiert&lt;/li&gt;
+                    &lt;li&gt;50% Fehlerquote bei Formular-Ausfüllung&lt;/li&gt;
+                    &lt;li&gt;Keine Datenintegrität (Projekte ↔ Geräte)&lt;/li&gt;
+                    &lt;li&gt;Keine Prozess-Übersicht&lt;/li&gt;
+                    &lt;li&gt;Partner-Kontakte in separatem Outlook-System&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+
+            &lt;!-- After --&gt;
+            &lt;div style=&quot;background: var(--white); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);&quot;&gt;
+                &lt;h3 style=&quot;color: #28a745; margin-bottom: 1.5rem;&quot;&gt;✅ Nachher&lt;/h3&gt;
+                &lt;ul style=&quot;color: #666; line-height: 2;&quot;&gt;
+                    &lt;li&gt;Zentrale NocoDB-Datenbank mit Relationen&lt;/li&gt;
+                    &lt;li&gt;Automatische Identifikation + WhatsApp-Erinnerungen&lt;/li&gt;
+                    &lt;li&gt;Partner-Portal für direkte Dateneingabe&lt;/li&gt;
+                    &lt;li&gt;100% validierte Eingaben durch Formular-Logik&lt;/li&gt;
+                    &lt;li&gt;Bidirektionale Verknüpfungen (Projekte ↔ Geräte)&lt;/li&gt;
+                    &lt;li&gt;Echtzeit-Dashboard mit allen KPIs&lt;/li&gt;
+                    &lt;li&gt;Integriertes System mit allen Partner-Daten&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- Key Learnings --&gt;
+&lt;section class=&quot;about&quot; style=&quot;background: var(--white);&quot;&gt;
+    &lt;div class=&quot;about-container&quot; style=&quot;grid-template-columns: 1fr; gap: 2rem;&quot;&gt;
+        &lt;div class=&quot;about-content&quot;&gt;
+            &lt;h2&gt;KEY LEARNINGS&lt;/h2&gt;
+
+            &lt;div style=&quot;display: grid; gap: 1.5rem; margin-top: 2rem;&quot;&gt;
+                &lt;div style=&quot;padding: 1.5rem; background: var(--bg-light); border-radius: 8px; border-left: 4px solid var(--secondary);&quot;&gt;
+                    &lt;h4 style=&quot;color: var(--primary); margin-bottom: 0.5rem;&quot;&gt;1. Strategische Ausrichtung ist entscheidend&lt;/h4&gt;
+                    &lt;p style=&quot;color: #666;&quot;&gt;Der 90-minütige CEO-Workshop zu Beginn war kritisch. Ohne klare Priorisierung (50% Zeitersparnis, 30% Fehlerreduktion, 20% Übersicht) hätte ich möglicherweise in die falsche Richtung entwickelt.&lt;/p&gt;
+                &lt;/div&gt;
+
+                &lt;div style=&quot;padding: 1.5rem; background: var(--bg-light); border-radius: 8px; border-left: 4px solid var(--secondary);&quot;&gt;
+                    &lt;h4 style=&quot;color: var(--primary); margin-bottom: 0.5rem;&quot;&gt;2. Proof of Concept spart Zeit&lt;/h4&gt;
+                    &lt;p style=&quot;color: #666;&quot;&gt;2 Wochen PoC mit groben Workflows aber funktionierenden APIs haben verhindert, dass ich 6 Wochen in die falsche Richtung entwickle. Das User Interface früh validieren lassen war Gold wert.&lt;/p&gt;
+                &lt;/div&gt;
+
+                &lt;div style=&quot;padding: 1.5rem; background: var(--bg-light); border-radius: 8px; border-left: 4px solid var(--secondary);&quot;&gt;
+                    &lt;h4 style=&quot;color: var(--primary); margin-bottom: 0.5rem;&quot;&gt;3. User Involvement während Entwicklung&lt;/h4&gt;
+                    &lt;p style=&quot;color: #666;&quot;&gt;Der Test-Account für die Mitarbeiterin während der Implementierung führte zu wertvollen Feature-Wünschen, die ich sofort einbauen konnte – statt nachträglich zu refactoren.&lt;/p&gt;
+                &lt;/div&gt;
+
+                &lt;div style=&quot;padding: 1.5rem; background: var(--bg-light); border-radius: 8px; border-left: 4px solid var(--secondary);&quot;&gt;
+                    &lt;h4 style=&quot;color: var(--primary); margin-bottom: 0.5rem;&quot;&gt;4. Tell-Show-Do-Review für nachhaltigen Wissenstransfer&lt;/h4&gt;
+                    &lt;p style=&quot;color: #666;&quot;&gt;Die Kombination aus schriftlicher Dokumentation, Video-Tutorial und praktischem Training stellte sicher, dass die Mitarbeiterin wirklich selbständig arbeiten kann – nicht nur theoretisch.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- CTA Section --&gt;
+&lt;section class=&quot;cta&quot;&gt;
+    &lt;h2&gt;ÄHNLICHES PROJEKT GEPLANT?&lt;/h2&gt;
+    &lt;p style=&quot;max-width: 700px; margin: 0 auto 2rem;&quot;&gt;
+        Wenn Sie repetitive Prozesse haben, die automatisiert werden sollten, oder ein komplexes Order Management System benötigen – lassen Sie uns darüber sprechen.
+    &lt;/p&gt;
+    &lt;div style=&quot;display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;&quot;&gt;
+        &lt;a href=&quot;https://cal.com/kevin-armbruster-cjwy5v/30min&quot; target=&quot;_blank&quot; class=&quot;btn-white&quot;&gt;Kostenloses Erstgespräch buchen&lt;/a&gt;
+        &lt;a href=&quot;/services/&quot; class=&quot;btn-secondary&quot; style=&quot;background: transparent; border: 2px solid var(--white); color: var(--white);&quot;&gt;Meine Services →&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+
+    <footer>
+    <div class="footer-container">
+        <div class="footer-column">
+            <h4>Kevin Armbruster</h4>
+            <p>Process Automation Consultant</p>
+            <p style="margin-top: 1rem; opacity: 0.8; font-size: 0.875rem;">
+                Ich helfe KMUs, Prozesse zu optimieren durch systematische Analyse und hands-on Automatisierung.
+            </p>
+        </div>
+        <div class="footer-column">
+            <h4>Schnelllinks</h4>
+            <ul>
+                <li><a href="/services/">Leistungen</a></li>
+                <li><a href="/#portfolio">Portfolio</a></li>
+                <li><a href="/about/">Über mich</a></li>
+                <li><a href="/#contact">Kontakt</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Ressourcen</h4>
+            <ul>
+                <li><a href="/resources/Kevin Armbruster - Lebenslauf.pdf">📄 Lebenslauf als PDF öffnen</a></li>
+                <li><a href="/resources/Kevin Armbruster - CV.pdf">📄 See Resume as PDF</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Vernetzen</h4>
+            <ul>
+                <li><a href="https://linkedin.com/in/kevin-armbruster" target="_blank">LinkedIn</a></li>
+                <li>Berlin, Deutschland</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        © 2025 Kevin Armbruster. Alle Rechte vorbehalten.
+    </div>
+</footer>
+
+    <!-- n8n Chat Widget -->
+<script type="module">
+    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+    createChat({
+        // Mode - set to 'window' for floating bubble
+        mode: 'window',
+
+        // n8n Webhook URL
+        webhookUrl: 'https://kevin-n8n.up.railway.app/webhook/d030c087-be85-4dc6-b30a-68c04c4725cc/chat',
+
+        // Webhook Config
+        webhookConfig: {
+            method: 'POST',
+            headers: {}
+        },
+
+        // Initial Messages
+        initialMessages: [
+            "Hi, ich bin Jake. Wie kann ich helfen?"
+        ],
+
+        i18n: {
+            en: {
+                title: 'KI-Chatbot 🤖',
+                subtitle: "",
+                footer: '',
+                getStarted: 'Neue Konversation',
+                inputPlaceholder: 'Schreibe deine Frage',
+            },
+        },
+
+        // Metadata (sent to n8n with each message)
+        metadata: {
+            language: 'de',
+            source: 'website',
+            page: window.location.pathname
+        }
+    });
+</script>
+
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
