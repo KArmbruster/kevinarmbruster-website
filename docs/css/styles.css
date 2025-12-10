@@ -10,6 +10,7 @@
     --primary: #2C3E50;
     --secondary: #27AE60;
     --bg-light: #F8F9FA;
+    --bg-light2: #d8dadb;
     --text-dark: #2C3E50;
     --white: #FFFFFF;
 }
@@ -19,6 +20,18 @@ body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     color: var(--text-dark);
     line-height: 1.6;
+}
+
+/* List Styles */
+ul, ol {
+    padding-left: 0;
+    margin-left: 1.5rem;
+    list-style-position: outside;
+}
+
+li {
+    padding-left: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 /* Navigation */
@@ -98,10 +111,11 @@ nav {
 .btn-primary {
     background: var(--secondary);
     color: var(--white);
-    padding: 0.75rem 1.5rem;
+    padding: 1rem 2rem;
     border-radius: 6px;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 1.125rem;
     transition: background 0.3s;
     display: inline-block;
 }
@@ -113,11 +127,12 @@ nav {
 .btn-secondary {
     background: transparent;
     color: var(--white);
-    padding: 0.75rem 1.5rem;
+    padding: 1rem 2rem;
     border: 2px solid var(--white);
     border-radius: 6px;
     text-decoration: none;
     font-weight: 600;
+    font-size: 1.125rem;
     transition: all 0.3s;
     display: inline-block;
 }
@@ -148,8 +163,7 @@ nav {
 .hero {
     background: var(--primary);
     color: var(--white);
-    padding: 4rem 2rem;
-    min-height: 600px;
+    padding: 3rem 2rem;
     display: flex;
     align-items: center;
 }
@@ -262,7 +276,7 @@ nav {
 
 /* Services Section */
 .services {
-    padding: 5rem 2rem;
+    padding: 2rem 2rem;
     background: var(--bg-light);
 }
 
@@ -290,13 +304,13 @@ nav {
     background: var(--white);
     padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .service-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
 }
 
 .service-icon {
