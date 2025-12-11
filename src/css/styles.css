@@ -438,12 +438,27 @@ nav {
     background: var(--bg-light);
 }
 
-.testimonials-grid {
+.testimonials-carousel-container {
     max-width: 1200px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    position: relative;
+    display: flex;
+    align-items: center;
     gap: 2rem;
+}
+
+.testimonials-carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 2rem 0;
+}
+
+.testimonials-track {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.5s ease-in-out;
+    align-items: center;
 }
 
 .testimonial-card {
@@ -451,13 +466,23 @@ nav {
     border-radius: 12px;
     padding: 2rem;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    transition: transform 0.3s, box-shadow 0.3s;
     display: flex;
     flex-direction: column;
+    width: 450px;
+    flex-shrink: 0;
+    opacity: 0.4;
+    transform: scale(0.9);
+    transition: all 0.5s ease-in-out;
+}
+
+.testimonial-card.center {
+    opacity: 1;
+    transform: scale(1.05);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+    z-index: 10;
 }
 
 .testimonial-card:hover {
-    transform: translateY(-5px);
     box-shadow: 0 8px 30px rgba(0,0,0,0.12);
 }
 
@@ -471,9 +496,9 @@ nav {
 
 .testimonial-text {
     color: #666;
-    font-size: 1rem;
+    font-size: 1.125rem;
     line-height: 1.8;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     flex-grow: 1;
     font-style: italic;
 }
@@ -495,6 +520,62 @@ nav {
 .author-info p {
     color: #999;
     font-size: 0.875rem;
+}
+
+/* Carousel Navigation Buttons */
+.carousel-btn {
+    background: var(--white);
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.carousel-btn:hover {
+    background: var(--primary);
+    color: var(--white);
+    transform: scale(1.1);
+}
+
+.carousel-btn:active {
+    transform: scale(0.95);
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ddd;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    padding: 0;
+}
+
+.indicator.active {
+    background: var(--secondary);
+    width: 32px;
+    border-radius: 6px;
+}
+
+.indicator:hover {
+    background: var(--primary);
 }
 
 /* CTA Section */
@@ -961,13 +1042,17 @@ footer {
         padding: 3rem 1rem;
     }
 
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+    .testimonials-carousel-container {
+        gap: 1rem;
+    }
+
+    .testimonials-track {
+        gap: 1rem;
     }
 
     .testimonial-card {
-        padding: 1.5rem;
+        padding: 2rem 1.5rem 1.5rem;
+        min-width: 100%;
     }
 
     .quote-icon {
@@ -978,7 +1063,7 @@ footer {
     .testimonial-text {
         font-size: 0.95rem;
         line-height: 1.6;
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
     }
 
     .testimonial-author {
@@ -992,6 +1077,26 @@ footer {
 
     .author-info p {
         font-size: 0.8rem;
+    }
+
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+
+    .carousel-indicators {
+        margin-top: 1.5rem;
+        gap: 0.5rem;
+    }
+
+    .indicator {
+        width: 10px;
+        height: 10px;
+    }
+
+    .indicator.active {
+        width: 24px;
     }
 
     /* CTA Section */
