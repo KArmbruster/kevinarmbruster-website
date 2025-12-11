@@ -164,7 +164,7 @@ All support custom domains and HTTPS out of the box.
 - Prozessautomatisierung Berater
 - Workflow Automatisierung Deutschland
 - n8n Consultant Deutschland
-- Prozessoptimierung KMU
+- Prozessoptimierung für Unternehmen
 
 ### Primary Keywords (EN)
 - Process Automation Consultant
@@ -173,7 +173,7 @@ All support custom domains and HTTPS out of the box.
 - Operations Excellence Consultant
 
 ### Meta Description Template (DE)
-"Prozessautomatisierung Berater für KMU. Eliminiere repetitive Arbeit durch systematische Analyse und hands-on Implementierung. 7 Jahre Operations-Erfahrung + moderne Tools."
+"Prozessautomatisierung Berater für Unternehmen. Eliminiere repetitive Arbeit durch systematische Analyse und hands-on Implementierung. 7 Jahre Operations-Erfahrung + moderne Tools."
 
 ### Meta Description Template (EN)
 "Process Automation Consultant helping SMEs eliminate repetitive work through systematic analysis and hands-on implementation. 7 years operations experience + modern automation tools."
