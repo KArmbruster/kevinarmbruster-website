@@ -724,6 +724,30 @@ footer {
     text-align: center;
     opacity: 0.7;
     font-size: 0.875rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-legal-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.footer-legal-links a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.footer-legal-links a:hover {
+    opacity: 1;
+}
+
+.footer-legal-links .separator {
+    opacity: 0.5;
 }
 
 /* Mobile Responsive */
