@@ -61,9 +61,13 @@ document.addEventListener('DOMContentLoaded', () => {
         let isTransitioning = false;
 
         function updateCarousel(transition = true) {
-            const cardWidth = 450;
-            const gap = 32;
-            const carouselWidth = carousel.offsetWidth;
+            // Get actual card width from first card (responsive)
+            const firstCard = allCards[0];
+            const cardWidth = firstCard ? firstCard.offsetWidth : 450;
+            const gap = window.innerWidth <= 768 ? 12 : 32; // 0.75rem on mobile, 2rem on desktop
+
+            // Use carousel width for centering (now full width on mobile due to CSS)
+            const centeringWidth = carousel.offsetWidth;
 
             // Disable transition for instant repositioning
             if (!transition) {
@@ -72,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 track.style.transition = 'transform 0.5s ease-in-out';
             }
 
-            const centerOffset = (carouselWidth / 2) - (cardWidth / 2);
+            const centerOffset = (centeringWidth / 2) - (cardWidth / 2);
             const offset = (currentIndex * (cardWidth + gap)) - centerOffset;
 
             track.style.transform = `translateX(-${offset}px)`;
@@ -90,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Force reflow if transition was disabled
             if (!transition) {
-                track.offsetHeight;
+                void track.offsetWidth; // Use offsetWidth instead of offsetHeight to avoid scroll
                 track.style.transition = 'transform 0.5s ease-in-out';
             }
         }
@@ -116,10 +120,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     currentIndex = newIndex;
 
-                    const cardWidth = 450;
-                    const gap = 32;
-                    const carouselWidth = carousel.offsetWidth;
-                    const centerOffset = (carouselWidth / 2) - (cardWidth / 2);
+                    const firstCard = allCards[0];
+                    const cardWidth = firstCard ? firstCard.offsetWidth : 450;
+                    const gap = window.innerWidth <= 768 ? 12 : 32;
+                    const centeringWidth = carousel.offsetWidth;
+                    const centerOffset = (centeringWidth / 2) - (cardWidth / 2);
                     const offset = (currentIndex * (cardWidth + gap)) - centerOffset;
 
                     track.style.transform = `translateX(-${offset}px)`;
@@ -161,10 +166,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     currentIndex = newIndex;
 
-                    const cardWidth = 450;
-                    const gap = 32;
-                    const carouselWidth = carousel.offsetWidth;
-                    const centerOffset = (carouselWidth / 2) - (cardWidth / 2);
+                    const firstCard = allCards[0];
+                    const cardWidth = firstCard ? firstCard.offsetWidth : 450;
+                    const gap = window.innerWidth <= 768 ? 12 : 32;
+                    const centeringWidth = carousel.offsetWidth;
+                    const centerOffset = (centeringWidth / 2) - (cardWidth / 2);
                     const offset = (currentIndex * (cardWidth + gap)) - centerOffset;
 
                     track.style.transform = `translateX(-${offset}px)`;
