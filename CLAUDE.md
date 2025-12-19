@@ -107,7 +107,8 @@ Detailed content in [concept/04-portfolio-texte-de.md](concept/04-portfolio-text
 **Recommended: Plain HTML + Modern Enhancements**
 
 This project does not require a JavaScript framework. Use plain HTML with:
-- **Styling:** Tailwind CSS (via CDN for simplicity, or custom CSS)
+- **Styling:** Tailwind CSS + **daisyUI** component library
+- **Component Framework:** [daisyUI](https://daisyui.com/) for pre-built components (buttons, cards, navbars, etc.)
 - **JavaScript:** Vanilla JS for language toggle and interactions
 - **Chatbot:** [@n8n/chat](https://www.npmjs.com/package/@n8n/chat) widget via CDN (works perfectly with plain HTML)
 - **Animations:** CSS transitions or lightweight JS (optional)
@@ -118,6 +119,20 @@ This project does not require a JavaScript framework. Use plain HTML with:
 - ✅ Simpler deployment and maintenance
 - ✅ Complete control over code
 - ✅ Perfectly suitable for portfolio/service site
+
+**Why daisyUI:**
+- ✅ Built on Tailwind CSS (semantic component classes)
+- ✅ Works with plain HTML (no React/Vue required)
+- ✅ Professional, clean design perfect for B2B consulting
+- ✅ Highly customizable to match brand colors
+- ✅ Excellent documentation
+
+**Component Usage:**
+For all new features, use daisyUI components instead of building from scratch:
+- Buttons: `<button class="btn btn-primary">Text</button>`
+- Cards: `<div class="card bg-base-100 shadow-xl">...</div>`
+- Navbar: `<div class="navbar bg-base-100">...</div>`
+- See full component list: [daisyUI Components](https://daisyui.com/components/)
 
 **Must-haves:**
 - Fully responsive (mobile-first)
