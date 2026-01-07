@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Wie ich mit n8n ein RAG-System aufgebaut habe, das mein Fachwissen skaliert und Kunden 24/7 intelligent berät.">
+    <title>Von der Idee zum intelligenten Chatbot: Eine technische Reise durch RAG-Systeme mit n8n | Kevin Armbruster Blog</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://kevinarmbruster.de/blog/rag-system/">
+    <meta property="og:title" content="Von der Idee zum intelligenten Chatbot: Eine technische Reise durch RAG-Systeme mit n8n">
+    <meta property="og:description" content="Wie ich mit n8n ein RAG-System aufgebaut habe, das mein Fachwissen skaliert und Kunden 24/7 intelligent berät.">
+    <meta property="og:image" content="https://kevinarmbruster.de/images/social.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:site_name" content="Kevin Armbruster">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://kevinarmbruster.de/blog/rag-system/">
+    <meta name="twitter:title" content="Von der Idee zum intelligenten Chatbot: Eine technische Reise durch RAG-Systeme mit n8n">
+    <meta name="twitter:description" content="Wie ich mit n8n ein RAG-System aufgebaut habe, das mein Fachwissen skaliert und Kunden 24/7 intelligent berät.">
+    <meta name="twitter:image" content="https://kevinarmbruster.de/images/social.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- n8n Chat Widget Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <nav>
+    <div class="nav-container">
+        <a href="/" class="logo">
+            <img src="/images/KA_logo_white.png" alt="Kevin Armbruster Logo">
+            Kevin Armbruster
+        </a>
+        <button class="menu-toggle" aria-label="Toggle navigation" id="menuToggle">
+            ☰
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about/">Über mich</a></li>
+            <li><a href="/services/">Services</a></li>
+            <li><a href="/fallstudie/">Fallstudie</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/#contact" class="btn-primary">Kontakt</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+    <!-- Blog Post Header -->
+    <section class="hero" style="padding: 3rem 2rem;">
+        <div class="hero-container" style="grid-template-columns: 1fr;">
+            <div class="hero-content" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <p style="color: var(--secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">7. Januar 2026</p>
+                <h1 style="font-size: 2rem;">Von der Idee zum intelligenten Chatbot: Eine technische Reise durch RAG-Systeme mit n8n</h1>
+                <a href="/blog/" style="color: var(--secondary); font-size: 0.9rem;">← Zurück zum Blog</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Post Content -->
+    <article class="blog-post" style="max-width: 800px; margin: 0 auto; padding: 2rem;">
+        <p>Als Automatisierungs-Consultant begegne ich täglich der gleichen Herausforderung: Wie kann ich mein Fachwissen skalieren, ohne ständig die gleichen Fragen zu beantworten? Die Antwort liegt in einem intelligenten Chatbot-System, das ich komplett mit n8n aufgebaut habe. In diesem Artikel nehme ich Sie mit auf eine technische Reise durch die faszinierende Welt der RAG-Systeme (Retrieval Augmented Generation) und zeige Ihnen, wie aus simplen Texten ein intelligenter Gesprächspartner wird.</p>
+<h2>Das Problem: Warum normale Chatbots nicht ausreichen</h2>
+<p>Stellen Sie sich vor, Sie haben jahrelange Expertise in einem Fachgebiet aufgebaut. Ihre Website-Besucher stellen immer wieder ähnliche, aber nicht identische Fragen: &quot;Was kostet eine Automatisierung?&quot;, &quot;Haben Sie Erfahrung mit Logistik?&quot;, &quot;Wie funktioniert n8n?&quot;. Ein herkömmlicher Chatbot mit vorgefertigten Antworten würde hier schnell an seine Grenzen stoßen. Die Fragen sind zu vielfältig, zu spezifisch, zu kontextabhängig.</p>
+<p>Die Lösung? Ein System, das wie ein menschlicher Experte funktioniert: Es &quot;liest&quot; die gesamte Wissensbasis, &quot;versteht&quot; die Frage und &quot;komponiert&quot; eine passende Antwort aus dem verfügbaren Wissen. Genau das macht ein RAG-System.</p>
+<h2>Die Architektur: Zwei Welten, ein System</h2>
+<p>Mein n8n-Workflow besteht aus zwei getrennten, aber verbundenen Bereichen:</p>
+<h2>Teil 1) Wissen digitalisieren - Der Upload-Prozess</h2>
+<h3>1.1) Upload der Informationen</h3>
+<p>Alles beginnt mit dem Upload einer Markdown-Datei - in meinem Fall eine 15-seitige Zusammenfassung meiner gesamten beruflichen Expertise. Warum Markdown? Es ist strukturiert, maschinenlesbar und trotzdem menschenfreundlich.</p>
+<h3>1.2) Text-Segmentierung - Der &quot;Default Data Loader&quot;</h3>
+<p>Hier wird es technisch interessant. Ein 15-seitiges Dokument kann nicht als ein Block verarbeitet werden - es wäre zu groß und zu unspezifisch. Der Default Data Loader von n8n zerlegt den Text intelligent in kleinere, sinnvolle Abschnitte (Chunks).</p>
+<p><strong>Was passiert beim Chunking?</strong></p>
+<ul>
+<li><strong>Chunk-Größe</strong>: Typischerweise 500-1000 Zeichen pro Abschnitt</li>
+<li><strong>Overlap</strong>: 200 Zeichen Überlappung zwischen Chunks, damit Kontext nicht verloren geht</li>
+</ul>
+<p><strong>Warum ist Chunking notwendig?</strong>
+Stellen Sie sich vor, Sie suchen in einem Lexikon nach &quot;Automatisierung&quot;. Sie möchten nicht das komplette Lexikon als Antwort, sondern nur den relevanten Artikel. Genauso funktioniert Chunking - es macht das Wissen &quot;durchsuchbar&quot;.</p>
+<h3>1.3) Vektorisierung - Die &quot;Embeddings OpenAI&quot; Node</h3>
+<p>Jetzt kommt der magische Teil: Die Textstücke werden in mathematische Vektoren umgewandelt. Aber was bedeutet das konkret?</p>
+<p><strong>Was sind Embeddings?</strong>
+Ein Embedding ist eine numerische Darstellung von Text in einem hochdimensionalen Raum (meist 1536 Dimensionen bei OpenAI). Ähnliche Begriffe liegen im Vektorraum nah beieinander:</p>
+<pre><code>&quot;Automatisierung&quot; → [0.1, -0.3, 0.8, ..., 0.2]
+&quot;Workflow-Optimierung&quot; → [0.12, -0.28, 0.82, ..., 0.18]
+&quot;Kuchen backen&quot; → [-0.5, 0.7, -0.1, ..., -0.9]
+</code></pre>
+<p>Die ersten beiden Vektoren sind ähnlicher zueinander als zum dritten - das System &quot;versteht&quot; semantische Verwandtschaft.</p>
+<h3>1.4) Speicherung - Der &quot;Pinecone Vector Store&quot;</h3>
+<p>Die Vektoren werden in einer spezialisierten Datenbank gespeichert - einem Vector Store. Pinecone ist darauf optimiert, aus Millionen von Vektoren die ähnlichsten zu finden.</p>
+<p><strong>Warum nicht eine normale Datenbank?</strong>
+Normale Datenbanken sind für exakte Übereinstimmungen optimiert (&quot;Finde alle Kunden mit Namen 'Müller'&quot;). Vector Stores sind für Ähnlichkeitssuchen optimiert (&quot;Finde die 5 ähnlichsten Konzepte zu 'Prozessoptimierung'&quot;).</p>
+<h2>Teil 2) Die Konversations-Intelligenz</h2>
+<p>Sobald ein Nutzer eine Nachricht sendet, startet die rechte Seite des Workflows. Hier beginnt die eigentliche Intelligenz.</p>
+<h3>2.1) Session-Management - &quot;Has sessionId?&quot;</h3>
+<p>Jeder Chat braucht ein Gedächtnis. Die &quot;Has sessionId?&quot; Node prüft, ob bereits eine Unterhaltung läuft oder eine neue beginnt. Sessions ermöglichen Kontext über mehrere Nachrichten hinweg:</p>
+<pre><code>User: &quot;Was ist n8n?&quot;
+Bot: &quot;n8n ist eine Workflow-Automatisierungsplattform...&quot;
+User: &quot;Wie lerne ich es?&quot;  ← Das System weiß, &quot;es&quot; = &quot;n8n&quot;
+</code></pre>
+<h3>2.2) Relevanz-Prüfung - &quot;Guardrails&quot;</h3>
+<p>Nicht jede Frage gehört an einen Fachexperten. Die Guardrails-Node fungiert als intelligenter Filter:</p>
+<p><strong>Was macht Guardrails?</strong></p>
+<ul>
+<li>Erkennt irrelevante Fragen (&quot;Wie wird das Wetter morgen?&quot;)</li>
+<li>Identifiziert schädliche Inhalte</li>
+<li>Leitet nur fachbezogene Anfragen weiter</li>
+<li>Antwortet höflich bei Off-Topic-Fragen</li>
+</ul>
+<p><strong>Technische Umsetzung:</strong>
+Guardrails nutzen meist kleinere, spezialisierte Modelle, die schnell entscheiden können: &quot;Ist diese Frage relevant für Kevin Armbrusters Automation-Expertise?&quot;</p>
+<h3>2.3) Wissens-Retrieval - Der unsichtbare Held</h3>
+<p>Hier passiert die RAG-Magie: Das System sucht die relevantesten Informationen aus dem Vector Store.</p>
+<p><strong>Der Retrieval-Prozess:</strong></p>
+<ol>
+<li><strong>Anfrage vektorisieren</strong>: &quot;Wie kann Automatisierung meine Logistikkosten senken?&quot; → Vektor</li>
+<li><strong>Ähnlichkeitssuche</strong>: Finde die 3-5 relevantesten Chunks aus der Wissensbasis</li>
+<li><strong>Kontext zusammenstellen</strong>: Kombiniere gefundene Informationen zu einem Kontext</li>
+</ol>
+<p><strong>Beispiel:</strong></p>
+<pre><code>Gefundene relevante Chunks:
+- &quot;50% Kostenreduktion KREATIZE Logistik&quot;
+- &quot;Lean-Prinzipien Implementation&quot;
+- &quot;Termintreue von 81% auf 95%&quot;
+</code></pre>
+<h3>2.4) Intelligente Antwort-Generierung - &quot;AI Agent (Jake)&quot;</h3>
+<p>Der AI Agent ist das Herzstück des Systems. Er kombiniert:</p>
+<ul>
+<li><strong>Gefundenes Wissen</strong> (aus dem Vector Store)</li>
+<li><strong>Chat-Geschichte</strong> (aus Simple Memory)</li>
+<li><strong>Persönlichkeit</strong> (aus dem System-Prompt)</li>
+</ul>
+<p><strong>Was macht den Agent intelligent?</strong></p>
+<ul>
+<li><strong>Kontext-Bewusstsein</strong>: Berücksichtigt vorherige Nachrichten</li>
+<li><strong>Wissens-Integration</strong>: Verbindet mehrere Informationsquellen</li>
+<li><strong>Tonalität</strong>: Antwortet im Stil des Experten</li>
+<li><strong>Präzision</strong>: Bleibt bei Fakten, halluziniert nicht</li>
+</ul>
+<h3>2.5) Memory-Management - &quot;Simple Memory&quot;</h3>
+<p>Jede Interaktion wird gespeichert, damit das System lernt und Kontext behält:</p>
+<pre><code>Gespeichert wird:
+- User-Frage
+- Bot-Antwort
+- Session-ID
+- Timestamp
+- Verwendete Quellen
+</code></pre>
+<h3>2.6) Follow-up - &quot;send_email&quot;</h3>
+<p>Nach wichtigen Gesprächen sendet das System automatisch eine Zusammenfassung per E-Mail. Das ermöglicht persönliche Nachfassungen bei qualifizierten Leads.</p>
+<h2>Die Technologien im Detail</h2>
+<h3>RAG (Retrieval Augmented Generation)</h3>
+<p>RAG löst das Grundproblem großer Sprachmodelle: Sie sind auf ihren Trainingsdaten &quot;eingefroren&quot;. RAG erweitert sie mit aktuellem, spezifischem Wissen:</p>
+<p><strong>Klassisches LLM:</strong></p>
+<pre><code>Frage → LLM → Antwort (basierend auf Training bis 2023)
+</code></pre>
+<p><strong>RAG-System:</strong></p>
+<pre><code>Frage → Retrieval (aktuelles Wissen) → LLM + Kontext → präzise Antwort
+</code></pre>
+<h3>Vector Embeddings - Die Mathematik hinter der Semantik</h3>
+<p>Embeddings übersetzen menschliche Sprache in mathematische Sprache:</p>
+<p><strong>Beispiel-Transformation:</strong></p>
+<pre><code>Text: &quot;Ich automatisiere Workflows&quot;
+Preprocessing: Tokenization, Normalisierung
+Neural Network: Transformer-Modell (z.B. text-embedding-ada-002)
+Output: [0.023, -0.156, 0.789, ..., 0.445] (1536 Dimensionen)
+</code></pre>
+<p><strong>Ähnlichkeits-Berechnung:</strong>
+Zwei Vektoren werden verglichen mittels Cosinus-Ähnlichkeit:</p>
+<pre><code>similarity = cos(θ) = (A · B) / (||A|| × ||B||)
+Wert von -1 (völlig unähnlich) bis 1 (identisch)
+</code></pre>
+<h2>Business-Implikationen</h2>
+<p>Dieses System demonstriert, wie moderne AI-Technologien praktisch eingesetzt werden können:</p>
+<ul>
+<li><strong>Skalierung von Expertise</strong> ohne Qualitätsverlust</li>
+<li><strong>24/7 Verfügbarkeit</strong> bei personalisierten Antworten</li>
+<li><strong>Datengetriebene Insights</strong> über Kundenbedürfnisse</li>
+<li><strong>Kosteneffizienz</strong> bei hoher Servicequalität</li>
+</ul>
+<h2>Fazit: Von der Technik zum Business-Value</h2>
+<p>Was als technisches Experiment begann, ist zu einem wertvollen Business-Tool geworden. Das RAG-System mit n8n zeigt, wie Low-Code-Plattformen auch komplexeste AI-Anwendungen zugänglich machen können.</p>
+<p>Die Zukunft der Business-Automatisierung liegt nicht in der Replacement von Menschen, sondern in der Amplifikation menschlicher Expertise. RAG-Systeme wie dieses sind ein perfektes Beispiel dafür.</p>
+<hr>
+<p><em>Möchten Sie ein ähnliches System für Ihr Unternehmen? Testen Sie zunächst meinen Chatbot und lassen Sie sich von den Möglichkeiten überzeugen. Bei Fragen zur Implementierung stehe ich gerne zur Verfügung.</em></p>
+
+    </article>
+
+    <!-- CTA Section -->
+    <section class="cta" style="margin-top: 3rem;">
+        <h2>INTERESSE AN AUTOMATISIERUNG?</h2>
+        <p>Buchen Sie ein kostenloses 30-Minuten Erstgespräch – unverbindlich.</p>
+        <a href="https://cal.com/kevin-armbruster-cjwy5v/30min" target="_blank" class="btn-white">Kostenloses Erstgespräch buchen</a>
+    </section>
+
+    <footer>
+    <div class="footer-container">
+        <div class="footer-column">
+            <h4>Kevin Armbruster</h4>
+            <p>Berater für Prozess Automation</p>
+            <p style="margin-top: 1rem; opacity: 0.8; font-size: 0.875rem;">
+                Ich helfe Unternehmen, Prozesse zu optimieren durch systematische Analyse und hands-on Automatisierung.
+            </p>
+        </div>
+        <div class="footer-column">
+            <h4>Schnelllinks</h4>
+            <ul>
+                <li><a href="/about/">Über mich</a></li>
+                <li><a href="/services/">Services</a></li>
+                <li><a href="/fallstudie/">Fallstudie</a></li>
+                <li><a href="/#contact">Kontakt</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Downloads</h4>
+            <ul>
+                <li><a href="/downloads/Kevin Armbruster - Lebenslauf.pdf" target="_blank">📄 Lebenslauf (DE)</a></li>
+                <li><a href="/downloads/Kevin Armbruster - CV.pdf" target="_blank">📄 Résumé (EN)</a></li>
+                <li><a href="/downloads/Lean Master Zertifikat.pdf" target="_blank">🏆 Lean Master Zertifikat</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Vernetzen</h4>
+            <ul>
+                <li><a href="https://linkedin.com/in/kevin-armbruster" target="_blank">LinkedIn</a></li>
+                <li>Berlin, Deutschland</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div>© 6 Kevin Armbruster. Alle Rechte vorbehalten.</div>
+        <div class="footer-legal-links">
+            <a href="/impressum/">Impressum</a>
+            <span class="separator">|</span>
+            <a href="/datenschutz/">Datenschutz</a>
+        </div>
+    </div>
+</footer>
+
+    <!-- n8n Chat Widget -->
+<script type="module">
+    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+    createChat({
+        // Mode - set to 'window' for floating bubble
+        mode: 'window',
+
+        // n8n Webhook URL
+        webhookUrl: 'https://kevin-n8n.up.railway.app/webhook/d030c087-be85-4dc6-b30a-68c04c4725cc/chat',
+
+        // Webhook Config
+        webhookConfig: {
+            method: 'POST',
+            headers: {}
+        },
+
+        // Initial Messages
+        initialMessages: [
+            "Hi, ich bin Jake, [Kevin's digitaler Assistent](/chatbot-details/)",
+            "Gerne beantworte ich Fragen rund um Kevin's Tätigkeiten. Sie können mir auch ein angedachtes Automatisierungs-Projekt beschreiben und ich schicke Kevin am Ende eine Zusammenfassung."
+        ],
+
+        i18n: {
+            en: {
+                title: 'KI-Chatbot 🤖',
+                subtitle: "",
+                footer: '',
+                getStarted: 'Neue Konversation',
+                inputPlaceholder: 'Schreibe deine Frage',
+            },
+        },
+
+        // Metadata (sent to n8n with each message)
+        metadata: {
+            language: 'de',
+            source: 'website',
+            page: window.location.pathname
+        }
+    });
+</script>
+
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

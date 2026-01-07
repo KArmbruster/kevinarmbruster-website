@@ -6,6 +6,24 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy({"CNAME": "CNAME"});
 
+  // Blog collection - sorted by date
+  eleventyConfig.addCollection("blog", function(collectionApi) {
+    return collectionApi.getFilteredByTag("blog").sort((a, b) => {
+      return b.date - a.date; // newest first
+    });
+  });
+
+  // Date filter for German formatting
+  eleventyConfig.addFilter("date", function(dateObj, format) {
+    const months = ["Januar", "Februar", "März", "April", "Mai", "Juni",
+                    "Juli", "August", "September", "Oktober", "November", "Dezember"];
+    const d = new Date(dateObj);
+    const day = d.getDate();
+    const month = months[d.getMonth()];
+    const year = d.getFullYear();
+    return `${day}. ${month} ${year}`;
+  });
+
   return {
     dir: {
       input: "src",

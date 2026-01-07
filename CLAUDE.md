@@ -223,7 +223,7 @@ All page content is fully written in German in the concept directory:
 - Column 2: Quick Links (Services, Portfolio, About, Values, Contact)
 - Column 3: Resources (CV download, Services PDF, email, phone)
 - Column 4: Connect (LinkedIn, Location: Berlin)
-- Bottom: © 2025 + Impressum | Datenschutz | Language toggle
+- Bottom: © 2026 + Impressum | Datenschutz | Language toggle
 
 ## Important Notes
 

@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Die gesuchte Seite wurde nicht gefunden.">
-    <title>404 - Seite nicht gefunden | Kevin Armbruster</title>
+    <meta name="description" content="Technische Artikel über Prozessautomatisierung, n8n, RAG-Systeme und mehr.">
+    <title>Blog | Kevin Armbruster</title>
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://kevinarmbruster.de/404.html">
-    <meta property="og:title" content="404 - Seite nicht gefunden | Kevin Armbruster">
-    <meta property="og:description" content="Die gesuchte Seite wurde nicht gefunden.">
+    <meta property="og:url" content="https://kevinarmbruster.de/blog/">
+    <meta property="og:title" content="Blog | Kevin Armbruster">
+    <meta property="og:description" content="Technische Artikel über Prozessautomatisierung, n8n, RAG-Systeme und mehr.">
     <meta property="og:image" content="https://kevinarmbruster.de/images/social.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -19,9 +19,9 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://kevinarmbruster.de/404.html">
-    <meta name="twitter:title" content="404 - Seite nicht gefunden | Kevin Armbruster">
-    <meta name="twitter:description" content="Die gesuchte Seite wurde nicht gefunden.">
+    <meta name="twitter:url" content="https://kevinarmbruster.de/blog/">
+    <meta name="twitter:title" content="Blog | Kevin Armbruster">
+    <meta name="twitter:description" content="Technische Artikel über Prozessautomatisierung, n8n, RAG-Systeme und mehr.">
     <meta name="twitter:image" content="https://kevinarmbruster.de/images/social.jpg">
 
     <!-- Favicon -->
@@ -61,60 +61,65 @@
 
 
     
-<style>
-.error-content {
-    min-height: 70vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4rem 2rem;
-    background: var(--bg-light);
-}
-
-.error-container {
-    text-align: center;
-    max-width: 600px;
-}
-
-.error-container h1 {
-    font-size: 3rem;
-    color: var(--primary);
-    margin-bottom: 1rem;
-}
-
-.error-container p {
-    font-size: 1.25rem;
-    color: #666;
-    margin-bottom: 2rem;
-}
-
-.btn-home {
-    background: var(--secondary);
-    color: var(--white);
-    padding: 1rem 2rem;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1.125rem;
-    display: inline-block;
-    transition: background 0.3s, transform 0.3s;
-}
-
-.btn-home:hover {
-    background: #229954;
-    transform: translateY(-2px);
-}
-</style>
-
-<!-- 404 Error Content -->
-<main class="error-content">
-    <div class="error-container">
-        <h1>404 - Seite nicht gefunden</h1>
-        <p>Die gewünschte Seite konnte leider nicht gefunden werden.</p>
-        <a href="/" class="btn-home">Zurück zur Startseite</a>
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-container" style="grid-template-columns: 1fr;">
+        <div class="hero-content" style="text-align: center; max-width: 700px; margin: 0 auto;">
+            <h1>Blog</h1>
+            <p>Technische Einblicke in meine Arbeit mit Prozessautomatisierung, n8n, KI-Systemen und mehr.</p>
+        </div>
     </div>
-</main>
+</section>
 
+<!-- Blog Posts List -->
+<section class="services" style="background: var(--white);">
+    <div style="max-width: 800px; margin: 0 auto;">
+        
+        <a href="/blog/rag-system/" style="text-decoration: none; color: inherit;">
+            <div style="padding: 1.5rem; background: var(--bg-light); border-radius: 8px; margin-bottom: 1.5rem; border-left: 3px solid var(--secondary); transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateX(5px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='none';">
+                <p style="color: var(--secondary); font-size: 0.85rem; margin-bottom: 0.5rem;">7. Januar 2026</p>
+                <h3 style="color: var(--primary); margin-bottom: 0.5rem; font-size: 1.25rem;">Von der Idee zum intelligenten Chatbot: Eine technische Reise durch RAG-Systeme mit n8n</h3>
+                <p style="color: #666; font-size: 0.9rem;">Wie ich mit n8n ein RAG-System aufgebaut habe, das mein Fachwissen skaliert und Kunden 24/7 intelligent berät.</p>
+                <span style="color: var(--secondary); font-size: 0.9rem; font-weight: 500;">Weiterlesen →</span>
+            </div>
+        </a>
+        
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta" style="padding-bottom: 2rem;">
+    <h2>HABEN SIE FRAGEN ZU EINEM ARTIKEL?</h2>
+    <p style="margin-bottom: 0;">Ich freue mich über Feedback und Diskussionen.</p>
+</section>
+
+<!-- Contact Form Section -->
+<section class="contact-form-section" style="padding-top: 2rem;">
+    <div class="contact-form-container">
+        <p>Füllen Sie das Formular aus und ich melde mich zeitnah bei Ihnen.</p>
+
+        <form id="contactForm" class="contact-form">
+            <div class="form-group">
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Nachricht *</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Nachricht senden</button>
+
+            <div id="formMessage" class="form-message"></div>
+        </form>
+    </div>
+</section>
 
     <footer>
     <div class="footer-container">

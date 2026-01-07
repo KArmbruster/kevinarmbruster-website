@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="{{ lang or 'de' }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ description or 'Blog-Artikel von Kevin Armbruster über Prozessautomatisierung und n8n.' }}">
+    <title>{{ title }} | Kevin Armbruster Blog</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://kevinarmbruster.de{{ page.url }}">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ description or 'Blog-Artikel von Kevin Armbruster über Prozessautomatisierung und n8n.' }}">
+    <meta property="og:image" content="https://kevinarmbruster.de/images/{{ og_image or 'social.jpg' }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:site_name" content="Kevin Armbruster">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://kevinarmbruster.de{{ page.url }}">
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="{{ description or 'Blog-Artikel von Kevin Armbruster über Prozessautomatisierung und n8n.' }}">
+    <meta name="twitter:image" content="https://kevinarmbruster.de/images/{{ og_image or 'social.jpg' }}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- n8n Chat Widget Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    {% include "header.html" %}
+
+    <!-- Blog Post Header -->
+    <section class="hero" style="padding: 3rem 2rem;">
+        <div class="hero-container" style="grid-template-columns: 1fr;">
+            <div class="hero-content" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <p style="color: var(--secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">{{ date | date }}</p>
+                <h1 style="font-size: 2rem;">{{ title }}</h1>
+                <a href="/blog/" style="color: var(--secondary); font-size: 0.9rem;">← Zurück zum Blog</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Post Content -->
+    <article class="blog-post" style="max-width: 800px; margin: 0 auto; padding: 2rem;">
+        {{ content | safe }}
+    </article>
+
+    <!-- CTA Section -->
+    <section class="cta" style="margin-top: 3rem;">
+        <h2>INTERESSE AN AUTOMATISIERUNG?</h2>
+        <p>Buchen Sie ein kostenloses 30-Minuten Erstgespräch – unverbindlich.</p>
+        <a href="https://cal.com/kevin-armbruster-cjwy5v/30min" target="_blank" class="btn-white">Kostenloses Erstgespräch buchen</a>
+    </section>
+
+    {% include "footer.html" %}
+    {% include "chatbot.html" %}
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

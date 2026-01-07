@@ -358,7 +358,7 @@ nav {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
     text-align: center;
 }
@@ -728,9 +728,9 @@ nav {
 
 /* n8n Chat Widget Custom Colors */
 :root {
-    --chat--color--primary: #27AE60;
-    --chat--color--primary-shade-50: #1e7d45;
-    --chat--color--primary--shade-100: #134b2a;
+    --chat--color--primary: #25bc64;
+    --chat--color--primary-shade-50: #259b56;
+    --chat--color--primary--shade-100: #13703a;
     --chat--color--secondary: #20b69e;
     --chat--color-secondary-shade-50: #1ca08a;
     --chat--color-white: #ffffff;
@@ -852,6 +852,112 @@ footer {
 
 .footer-legal-links .separator {
     opacity: 0.5;
+}
+
+/* Blog Post Styles */
+.blog-post {
+    color: var(--text-dark);
+    line-height: 1.8;
+}
+
+.blog-post h2 {
+    font-size: 1.75rem;
+    color: var(--primary);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--bg-light);
+}
+
+.blog-post h3 {
+    font-size: 1.35rem;
+    color: var(--primary);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.blog-post h4 {
+    font-size: 1.1rem;
+    color: var(--secondary);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.blog-post p {
+    margin-bottom: 1.25rem;
+    color: #444;
+}
+
+.blog-post ul,
+.blog-post ol {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+}
+
+.blog-post li {
+    margin-bottom: 0.5rem;
+    color: #444;
+}
+
+.blog-post strong {
+    color: var(--primary);
+}
+
+.blog-post code {
+    background: var(--bg-light);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 0.9em;
+    color: var(--primary);
+}
+
+.blog-post pre {
+    background: var(--primary);
+    color: var(--white);
+    padding: 1.25rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.blog-post pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+}
+
+.blog-post blockquote {
+    border-left: 4px solid var(--secondary);
+    padding-left: 1.5rem;
+    margin: 1.5rem 0;
+    color: #666;
+    font-style: italic;
+}
+
+.blog-post hr {
+    border: none;
+    border-top: 2px solid var(--bg-light);
+    margin: 2.5rem 0;
+}
+
+.blog-post a {
+    color: var(--secondary);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.blog-post a:hover {
+    border-bottom-color: var(--secondary);
+}
+
+.blog-post em {
+    color: #666;
 }
 
 /* Mobile Responsive */
