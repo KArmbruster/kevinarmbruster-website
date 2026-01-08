@@ -1,5 +1,5 @@
 ---
-title: "Von der Idee zum intelligenten Chatbot: Eine technische Reise durch RAG-Systeme mit n8n"
+title: "Technische Details zu meinem n8n Chatbot mit  RAG-System"
 description: "Wie ich mit n8n ein RAG-System aufgebaut habe, das mein Fachwissen skaliert und Kunden 24/7 intelligent berät."
 date: 2026-01-07
 tags: blog
