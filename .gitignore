@@ -19,4 +19,7 @@ Thumbs.db
 *.swo
 *~
 
+# Claude Code worktrees
+.claude/worktrees/
+
 # Old files removed after migration to Eleventy
