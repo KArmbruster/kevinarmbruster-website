@@ -5,6 +5,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy({"CNAME": "CNAME"});
+  eleventyConfig.addPassthroughCopy({".nojekyll": ".nojekyll"});
 
   // Blog collection - sorted by date
   eleventyConfig.addCollection("blog", function(collectionApi) {
