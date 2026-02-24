@@ -37,6 +37,42 @@
 
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Schema.org: Article -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Technische Details zu meinem n8n Chatbot mit  RAG-System",
+      "description": "Wie ich mit n8n ein RAG-System aufgebaut habe, das mein Fachwissen skaliert und Kunden 24/7 intelligent berät.",
+      "image": "https://kevinarmbruster.de/images/social.jpg",
+      "url": "https://kevinarmbruster.de/blog/rag-system/",
+      "datePublished": "Wed Jan 07 2026 01:00:00 GMT+0100 (Mitteleuropäische Normalzeit)",
+      "dateModified": "Wed Jan 07 2026 01:00:00 GMT+0100 (Mitteleuropäische Normalzeit)",
+      "author": {
+        "@type": "Person",
+        "name": "Kevin Armbruster",
+        "url": "https://kevinarmbruster.de/about/",
+        "image": "https://kevinarmbruster.de/images/portrait.jpg",
+        "jobTitle": "Berater für Prozess Automation",
+        "sameAs": ["https://linkedin.com/in/kevin-armbruster"]
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Kevin Armbruster",
+        "url": "https://kevinarmbruster.de",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://kevinarmbruster.de/images/favicon.png"
+        }
+      },
+      "inLanguage": "de-DE",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://kevinarmbruster.de/blog/rag-system/"
+      }
+    }
+    </script>
 </head>
 <body>
     <nav>
@@ -199,6 +235,24 @@ Wert von -1 (völlig unähnlich) bis 1 (identisch)
 <p><em>Möchten Sie ein ähnliches System für Ihr Unternehmen? Testen Sie zunächst meinen Chatbot und lassen Sie sich von den Möglichkeiten überzeugen. Bei Fragen zur Implementierung stehe ich gerne zur Verfügung.</em></p>
 
     </article>
+
+    <!-- Author Box -->
+    <div style="max-width: 800px; margin: 2rem auto; padding: 0 2rem;">
+        <div style="display: flex; gap: 1.5rem; align-items: flex-start; background: var(--bg-light); border-radius: 12px; padding: 1.5rem; border-left: 4px solid var(--secondary);">
+            <img src="/images/portrait.jpg" alt="Kevin Armbruster"
+                 style="width: 72px; height: 72px; border-radius: 50%; object-fit: cover; flex-shrink: 0;">
+            <div>
+                <div style="font-weight: 600; color: var(--primary); margin-bottom: 0.25rem;">Kevin Armbruster</div>
+                <div style="font-size: 0.85rem; color: var(--secondary); margin-bottom: 0.5rem;">
+                    Berater für Prozess Automation · M.Sc. Maschinenbau (TU Berlin) · Lean Master (ISO 18404)
+                </div>
+                <p style="color: #666; font-size: 0.875rem; margin: 0;">
+                    7 Jahre Operations-Erfahrung bei KREATIZE, jetzt selbstständiger Berater für Prozessautomatisierung mit n8n und modernen AI-Tools.
+                    <a href="/about/" style="color: var(--secondary); text-decoration: none; font-weight: 500;"> Mehr über mich →</a>
+                </p>
+            </div>
+        </div>
+    </div>
 
     <!-- CTA Section -->
     <section class="cta" style="margin-top: 3rem;">

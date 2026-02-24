@@ -37,6 +37,42 @@
 
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Schema.org: Article -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "{{ title }}",
+      "description": "{{ description or 'Blog-Artikel von Kevin Armbruster über Prozessautomatisierung und n8n.' }}",
+      "image": "https://kevinarmbruster.de/images/{{ og_image or 'social.jpg' }}",
+      "url": "https://kevinarmbruster.de{{ page.url }}",
+      "datePublished": "{{ date }}",
+      "dateModified": "{{ date }}",
+      "author": {
+        "@type": "Person",
+        "name": "Kevin Armbruster",
+        "url": "https://kevinarmbruster.de/about/",
+        "image": "https://kevinarmbruster.de/images/portrait.jpg",
+        "jobTitle": "Berater für Prozess Automation",
+        "sameAs": ["https://linkedin.com/in/kevin-armbruster"]
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Kevin Armbruster",
+        "url": "https://kevinarmbruster.de",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://kevinarmbruster.de/images/favicon.png"
+        }
+      },
+      "inLanguage": "de-DE",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://kevinarmbruster.de{{ page.url }}"
+      }
+    }
+    </script>
 </head>
 <body>
     {% include "header.html" %}
@@ -56,6 +92,24 @@
     <article class="blog-post" style="max-width: 800px; margin: 0 auto; padding: 2rem;">
         {{ content | safe }}
     </article>
+
+    <!-- Author Box -->
+    <div style="max-width: 800px; margin: 2rem auto; padding: 0 2rem;">
+        <div style="display: flex; gap: 1.5rem; align-items: flex-start; background: var(--bg-light); border-radius: 12px; padding: 1.5rem; border-left: 4px solid var(--secondary);">
+            <img src="/images/portrait.jpg" alt="Kevin Armbruster"
+                 style="width: 72px; height: 72px; border-radius: 50%; object-fit: cover; flex-shrink: 0;">
+            <div>
+                <div style="font-weight: 600; color: var(--primary); margin-bottom: 0.25rem;">Kevin Armbruster</div>
+                <div style="font-size: 0.85rem; color: var(--secondary); margin-bottom: 0.5rem;">
+                    Berater für Prozess Automation · M.Sc. Maschinenbau (TU Berlin) · Lean Master (ISO 18404)
+                </div>
+                <p style="color: #666; font-size: 0.875rem; margin: 0;">
+                    7 Jahre Operations-Erfahrung bei KREATIZE, jetzt selbstständiger Berater für Prozessautomatisierung mit n8n und modernen AI-Tools.
+                    <a href="/about/" style="color: var(--secondary); text-decoration: none; font-weight: 500;"> Mehr über mich →</a>
+                </p>
+            </div>
+        </div>
+    </div>
 
     <!-- CTA Section -->
     <section class="cta" style="margin-top: 3rem;">
